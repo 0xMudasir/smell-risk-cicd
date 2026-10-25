@@ -168,3 +168,18 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** Drop the specific rule-defining metrics (unknown); skip the ablation.
 - **Reason:** We cannot drop the exact rule metrics without the labeling spec, but size is the dominant predictor, so removing it is the strongest available circularity stress test.
 - **Effect:** AUC 0.835 -> 0.816 (small drop) recorded in `rq3_improvements.json`; supports "circularity plausible but not trivial".
+
+---
+
+## Phase 6 - Paper review + export
+
+### D6.1 Export static result JSONs + a manifest to the frontend
+- **Decision:** `export_artifacts.py` copies the 12 RQ JSONs plus `paper_reference.json`, `model_card.json`, `feature_schema.json`, `thresholds.json` into `frontend/src/assets/results/`, and writes a `manifest.json` (file list + model name/version + timestamp).
+- **Alternatives:** Have the frontend fetch everything from the API; commit nothing static.
+- **Reason:** CLAUDE.md 7.6 - the GitHub Pages site must render all research pages without the API. Static JSONs make that work and keep Rule 2 (UI shows only pipeline numbers). The manifest drives the empty-state check and the version banner.
+- **Effect:** 16 files in `frontend/src/assets/results/`; the Predict page still needs the live API, everything else works offline.
+
+### D6.2 PAPER_REVIEW grounded in our artifacts, arithmetic verified
+- **Decision:** Write all 9 review items with each claim tied to a file in `ml/artifacts/`, and verify the quantitative ones by computation (item 1 SVM F1s: 0.323/0.321 not 0.52/0.47; item 9 count 338,442-33,294=305,148).
+- **Reason:** Rule 2 + Section 9 ask for verified, evidenced criticism, not assertions.
+- **Effect:** `docs/PAPER_REVIEW.md` complete with a status table.

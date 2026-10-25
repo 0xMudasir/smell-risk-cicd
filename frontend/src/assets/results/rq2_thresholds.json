@@ -1,0 +1,355 @@
+{
+  "generated_at": "2026-10-25T09:52:54.402946+00:00",
+  "seed": 42,
+  "consensus_metrics": [
+    "Logical Lines",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "target": "has_smell",
+  "n_clean": 97636,
+  "n_smelly": 9918,
+  "balanced_undersample_n_per_class": 9918,
+  "notes": {
+    "effect_bands": "rank-biserial |r|: <0.1 negligible, 0.1 small, 0.3 medium, 0.5 large",
+    "thresholds": "warning = smelly median, critical = smelly Q3 (paper rule). as_classifier_cv evaluates 'metric > threshold' on grouped-CV test folds with thresholds fit on the train fold (the paper never validates thresholds).",
+    "mann_whitney": "two-sided; full data and a balanced random undersample (seed 42)."
+  },
+  "thresholds": {
+    "Logical Lines": {
+      "warning": 56.0,
+      "critical": 163.0,
+      "clean_median": 7.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 7.0,
+        "warning": 56.0,
+        "critical": 163.0,
+        "p95_smelly": 429.14999999999964,
+        "max": 69292.0
+      },
+      "paper_equivalent": {
+        "metric": "CountStmtExe",
+        "warning": 50,
+        "critical": 130,
+        "note": "paper's Table 14 value for a DIFFERENT metric and target (security bugs); context only, not a like-for-like comparison"
+      },
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 56.6,
+          "threshold_std": 7.002856560004639,
+          "precision_mean": 0.29065429403984305,
+          "recall_mean": 0.4963153292200042,
+          "f1_mean": 0.36501544121343166,
+          "f1_std": 0.06550916822811391
+        },
+        "critical": {
+          "threshold_mean": 162.2,
+          "threshold_std": 5.564171097297422,
+          "precision_mean": 0.6321240603187906,
+          "recall_mean": 0.25238235254147084,
+          "f1_mean": 0.35944876633313483,
+          "f1_std": 0.07459720705662133
+        },
+        "youden": {
+          "threshold_mean": 13.0,
+          "threshold_std": 5.059644256269407,
+          "precision_mean": 0.17400801149525447,
+          "recall_mean": 0.8149024860808451,
+          "f1_mean": 0.28538739242083777,
+          "f1_std": 0.018977293127162065
+        }
+      }
+    },
+    "Total Operands": {
+      "warning": 252.0,
+      "critical": 831.0,
+      "clean_median": 33.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 33.0,
+        "warning": 252.0,
+        "critical": 831.0,
+        "p95_smelly": 2452.7999999999956,
+        "max": 383408.0
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 253.8,
+          "threshold_std": 34.4740482102117,
+          "precision_mean": 0.25038405335339264,
+          "recall_mean": 0.5008567885926279,
+          "f1_mean": 0.332706781938176,
+          "f1_std": 0.05966112088732133
+        },
+        "critical": {
+          "threshold_mean": 829.1,
+          "threshold_std": 35.65760788387241,
+          "precision_mean": 0.5619591444379114,
+          "recall_mean": 0.25237384820579195,
+          "f1_mean": 0.34661337442500006,
+          "f1_std": 0.08046930483021614
+        },
+        "youden": {
+          "threshold_mean": 33.6,
+          "threshold_std": 5.2,
+          "precision_mean": 0.15353524824937753,
+          "recall_mean": 0.8863930983510393,
+          "f1_mean": 0.26153185947401786,
+          "f1_std": 0.012062310616538867
+        }
+      }
+    },
+    "Vocabulary": {
+      "warning": 71.0,
+      "critical": 156.0,
+      "clean_median": 20.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 20.0,
+        "warning": 71.0,
+        "critical": 156.0,
+        "p95_smelly": 347.14999999999964,
+        "max": 5123.0
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 71.4,
+          "threshold_std": 5.314132102234569,
+          "precision_mean": 0.22529073484963424,
+          "recall_mean": 0.4972850298172678,
+          "f1_mean": 0.30944066719146457,
+          "f1_std": 0.05715603073309372
+        },
+        "critical": {
+          "threshold_mean": 155.6,
+          "threshold_std": 6.053098380168622,
+          "precision_mean": 0.4546831645285258,
+          "recall_mean": 0.2537696973235277,
+          "f1_mean": 0.3234518812623958,
+          "f1_std": 0.08261731802742582
+        },
+        "youden": {
+          "threshold_mean": 26.0,
+          "threshold_std": 16.099689437998485,
+          "precision_mean": 0.14738404544594266,
+          "recall_mean": 0.7815652450060893,
+          "f1_mean": 0.2453775141347402,
+          "f1_std": 0.02008316285755067
+        }
+      }
+    },
+    "Length": {
+      "warning": 314.0,
+      "critical": 1013.0,
+      "clean_median": 40.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 40.0,
+        "warning": 314.0,
+        "critical": 1013.0,
+        "p95_smelly": 2992.7999999999956,
+        "max": 448728.0
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 315.4,
+          "threshold_std": 42.53751285630132,
+          "precision_mean": 0.25393493581876747,
+          "recall_mean": 0.5004611825306275,
+          "f1_mean": 0.33573149328329477,
+          "f1_std": 0.06054190591798197
+        },
+        "critical": {
+          "threshold_mean": 1015.45,
+          "threshold_std": 42.6181886053361,
+          "precision_mean": 0.5659393719685436,
+          "recall_mean": 0.25267654242146964,
+          "f1_mean": 0.3473609516448465,
+          "f1_std": 0.07915804927073862
+        },
+        "youden": {
+          "threshold_mean": 115.2,
+          "threshold_std": 67.61479128119824,
+          "precision_mean": 0.16686851355585253,
+          "recall_mean": 0.7024817836499249,
+          "f1_mean": 0.2647735842952845,
+          "f1_std": 0.031313889826619805
+        }
+      }
+    },
+    "Calculated Length": {
+      "warning": 411.1828632628342,
+      "critical": 1090.9990981130843,
+      "clean_median": 75.60964047443682,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 75.60964047443682,
+        "warning": 411.1828632628342,
+        "critical": 1090.9990981130843,
+        "p95_smelly": 2863.6478145475385,
+        "max": 63016.21763008605
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 412.55561401580974,
+          "threshold_std": 39.562924136497884,
+          "precision_mean": 0.22449686842533514,
+          "recall_mean": 0.49808788640334856,
+          "f1_mean": 0.30884553647946617,
+          "f1_std": 0.056530200735729424
+        },
+        "critical": {
+          "threshold_mean": 1090.616350754337,
+          "threshold_std": 53.17997398985166,
+          "precision_mean": 0.45453299356063803,
+          "recall_mean": 0.2537637013149412,
+          "f1_mean": 0.32338513518194434,
+          "f1_std": 0.08354436600573335
+        },
+        "youden": {
+          "threshold_mean": 79.99295457358569,
+          "threshold_std": 0.35883409092121493,
+          "precision_mean": 0.15144910035685494,
+          "recall_mean": 0.858334357683461,
+          "f1_mean": 0.2573936508231193,
+          "f1_std": 0.012423215321351114
+        }
+      }
+    },
+    "Volume": {
+      "warning": 1931.1826295405845,
+      "critical": 7364.191575968007,
+      "clean_median": 171.67343933251425,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 171.67343933251425,
+        "warning": 1931.1826295405845,
+        "critical": 7364.191575968007,
+        "p95_smelly": 24127.80998930883,
+        "max": 5233964.631784534
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 1942.283183764814,
+          "threshold_std": 300.98453331563485,
+          "precision_mean": 0.2506248084388174,
+          "recall_mean": 0.5011688027202256,
+          "f1_mean": 0.33295932458862154,
+          "f1_std": 0.06082673917979412
+        },
+        "critical": {
+          "threshold_mean": 7370.450613598919,
+          "threshold_std": 357.5059041847548,
+          "precision_mean": 0.5630374263936953,
+          "recall_mean": 0.25305222368003566,
+          "f1_mean": 0.34707101313343186,
+          "f1_std": 0.08187177830509174
+        },
+        "youden": {
+          "threshold_mean": 608.3035404475336,
+          "threshold_std": 384.7521361268723,
+          "precision_mean": 0.1645003421071642,
+          "recall_mean": 0.7022955779016595,
+          "f1_mean": 0.26226497658071934,
+          "f1_std": 0.03144786435370228
+        }
+      }
+    },
+    "Bugs": {
+      "warning": 0.6437275431801949,
+      "critical": 2.4547305253226694,
+      "clean_median": 0.0572244797775047,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 0.0572244797775047,
+        "warning": 0.6437275431801949,
+        "critical": 2.4547305253226694,
+        "p95_smelly": 8.04260332976961,
+        "max": 1744.6548772615113
+      },
+      "paper_equivalent": null,
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 0.6474277279216047,
+          "threshold_std": 0.10032817777187825,
+          "precision_mean": 0.2506248084388174,
+          "recall_mean": 0.5011688027202256,
+          "f1_mean": 0.33295932458862154,
+          "f1_std": 0.06082673917979412
+        },
+        "critical": {
+          "threshold_mean": 2.4568168711996394,
+          "threshold_std": 0.11916863472825158,
+          "precision_mean": 0.5630374263936953,
+          "recall_mean": 0.25305222368003566,
+          "f1_mean": 0.34707101313343186,
+          "f1_std": 0.08187177830509174
+        },
+        "youden": {
+          "threshold_mean": 0.20276784681584448,
+          "threshold_std": 0.1282507120422908,
+          "precision_mean": 0.1645003421071642,
+          "recall_mean": 0.7022955779016595,
+          "f1_mean": 0.26226497658071934,
+          "f1_std": 0.03144786435370228
+        }
+      }
+    },
+    "Cyclomatic Complexity": {
+      "warning": 12.0,
+      "critical": 39.0,
+      "clean_median": 2.0,
+      "ruler_quantiles": {
+        "min": 1.0,
+        "clean_median": 2.0,
+        "warning": 12.0,
+        "critical": 39.0,
+        "p95_smelly": 137.0,
+        "max": 49344.0
+      },
+      "paper_equivalent": {
+        "metric": "SumCyclomatic",
+        "warning": 24,
+        "critical": 57,
+        "note": "paper's Table 14 value for a DIFFERENT metric and target (security bugs); context only, not a like-for-like comparison"
+      },
+      "as_classifier_cv": {
+        "warning": {
+          "threshold_mean": 12.2,
+          "threshold_std": 0.39999999999999997,
+          "precision_mean": 0.24238529725840335,
+          "recall_mean": 0.47179055746738924,
+          "f1_mean": 0.31967169237325965,
+          "f1_std": 0.05824341748435598
+        },
+        "critical": {
+          "threshold_mean": 38.85,
+          "threshold_std": 2.3430749027719964,
+          "precision_mean": 0.44302154998115356,
+          "recall_mean": 0.2517098493846174,
+          "f1_mean": 0.32013459542892886,
+          "f1_std": 0.06437486927267665
+        },
+        "youden": {
+          "threshold_mean": 6.2,
+          "threshold_std": 1.8330302779823358,
+          "precision_mean": 0.19639452342797478,
+          "recall_mean": 0.6310101021571353,
+          "f1_mean": 0.29899106139095,
+          "f1_std": 0.011980022216791335
+        }
+      }
+    }
+  }
+}

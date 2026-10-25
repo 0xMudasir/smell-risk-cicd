@@ -33,7 +33,8 @@ same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend
 | P3 | RQ1 feature importance | done |
 | P4 | RQ2 statistics + thresholds | done |
 | P5 | RQ3 models + final model | done |
-| P6 | Paper review + export | next |
+| P6 | Paper review + export | done |
+| P7 | Flask API | next |
 | P7 | Flask API | |
 | P8 | Angular UI | |
 | P9 | CI/CD + Pages | |

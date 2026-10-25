@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-10-25T10:32:40.233782+00:00",
+  "files": [
+    "dataset_audit.json",
+    "feature_schema.json",
+    "model_card.json",
+    "paper_reference.json",
+    "preprocess_summary.json",
+    "rq1_correlation.json",
+    "rq1_importance.json",
+    "rq2_stats.json",
+    "rq2_tests.json",
+    "rq2_thresholds.json",
+    "rq3_confusion.json",
+    "rq3_improvements.json",
+    "rq3_nemenyi.json",
+    "rq3_results.json",
+    "rq3_roc.json",
+    "thresholds.json"
+  ],
+  "model": {
+    "name": "XGBoost",
+    "version": "1.0.0"
+  }
+}

@@ -1,0 +1,122 @@
+{
+  "risk_tiers": {
+    "low": {
+      "max_probability": 0.4,
+      "rule": "probability < 0.4 and no critical flag"
+    },
+    "critical": {
+      "min_probability": 0.7,
+      "min_critical_flags": 2,
+      "rule": "probability >= 0.7 OR two or more critical flags"
+    },
+    "elevated": {
+      "rule": "anything between low and critical"
+    }
+  },
+  "metric_thresholds": {
+    "Logical Lines": {
+      "warning": 56.0,
+      "critical": 163.0,
+      "clean_median": 7.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 7.0,
+        "warning": 56.0,
+        "critical": 163.0,
+        "p95_smelly": 429.14999999999964,
+        "max": 69292.0
+      }
+    },
+    "Total Operands": {
+      "warning": 252.0,
+      "critical": 831.0,
+      "clean_median": 33.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 33.0,
+        "warning": 252.0,
+        "critical": 831.0,
+        "p95_smelly": 2452.7999999999956,
+        "max": 383408.0
+      }
+    },
+    "Vocabulary": {
+      "warning": 71.0,
+      "critical": 156.0,
+      "clean_median": 20.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 20.0,
+        "warning": 71.0,
+        "critical": 156.0,
+        "p95_smelly": 347.14999999999964,
+        "max": 5123.0
+      }
+    },
+    "Length": {
+      "warning": 314.0,
+      "critical": 1013.0,
+      "clean_median": 40.0,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 40.0,
+        "warning": 314.0,
+        "critical": 1013.0,
+        "p95_smelly": 2992.7999999999956,
+        "max": 448728.0
+      }
+    },
+    "Calculated Length": {
+      "warning": 411.1828632628342,
+      "critical": 1090.9990981130843,
+      "clean_median": 75.60964047443682,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 75.60964047443682,
+        "warning": 411.1828632628342,
+        "critical": 1090.9990981130843,
+        "p95_smelly": 2863.6478145475385,
+        "max": 63016.21763008605
+      }
+    },
+    "Volume": {
+      "warning": 1931.1826295405845,
+      "critical": 7364.191575968007,
+      "clean_median": 171.67343933251425,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 171.67343933251425,
+        "warning": 1931.1826295405845,
+        "critical": 7364.191575968007,
+        "p95_smelly": 24127.80998930883,
+        "max": 5233964.631784534
+      }
+    },
+    "Bugs": {
+      "warning": 0.6437275431801949,
+      "critical": 2.4547305253226694,
+      "clean_median": 0.0572244797775047,
+      "ruler_quantiles": {
+        "min": 0.0,
+        "clean_median": 0.0572244797775047,
+        "warning": 0.6437275431801949,
+        "critical": 2.4547305253226694,
+        "p95_smelly": 8.04260332976961,
+        "max": 1744.6548772615113
+      }
+    },
+    "Cyclomatic Complexity": {
+      "warning": 12.0,
+      "critical": 39.0,
+      "clean_median": 2.0,
+      "ruler_quantiles": {
+        "min": 1.0,
+        "clean_median": 2.0,
+        "warning": 12.0,
+        "critical": 39.0,
+        "p95_smelly": 137.0,
+        "max": 49344.0
+      }
+    }
+  }
+}

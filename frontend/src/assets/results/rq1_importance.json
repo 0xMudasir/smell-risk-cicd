@@ -1,0 +1,941 @@
+{
+  "generated_at": "2026-10-25T09:48:37.410485+00:00",
+  "seed": 42,
+  "n_features": 14,
+  "features": [
+    "Logical Lines",
+    "Distinct Operators",
+    "Distinct Operands",
+    "Total Operators",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Difficulty",
+    "Effort",
+    "Time Required",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "topk": 10,
+  "methods": {
+    "linear_regression_coef": {
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "score": 1.0463964318939656,
+          "rank": 1
+        },
+        {
+          "feature": "Total Operands",
+          "score": 0.7427063331379264,
+          "rank": 2
+        },
+        {
+          "feature": "Length",
+          "score": 0.6422438398586057,
+          "rank": 3
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 0.614106674263327,
+          "rank": 4
+        },
+        {
+          "feature": "Bugs",
+          "score": 0.3990374853036435,
+          "rank": 5
+        },
+        {
+          "feature": "Volume",
+          "score": 0.39903748530364086,
+          "rank": 6
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 0.29939237945183533,
+          "rank": 7
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 0.20302090213080426,
+          "rank": 8
+        },
+        {
+          "feature": "Vocabulary",
+          "score": 0.19799365386802298,
+          "rank": 9
+        },
+        {
+          "feature": "Difficulty",
+          "score": 0.11675994868108897,
+          "rank": 10
+        },
+        {
+          "feature": "Total Operators",
+          "score": 0.0635965638644883,
+          "rank": 11
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 0.05511085793519571,
+          "rank": 12
+        },
+        {
+          "feature": "Effort",
+          "score": 0.04390004043257478,
+          "rank": 13
+        },
+        {
+          "feature": "Time Required",
+          "score": 0.043900040432563125,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Total Operands",
+        "Length",
+        "Cyclomatic Complexity",
+        "Bugs",
+        "Volume",
+        "Calculated Length",
+        "Distinct Operands",
+        "Vocabulary",
+        "Difficulty"
+      ]
+    },
+    "logistic_regression_coef": {
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "score": 8.410825730448803,
+          "rank": 1
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 5.644565621955643,
+          "rank": 2
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 3.1822037581734692,
+          "rank": 3
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 1.8476604616742254,
+          "rank": 4
+        },
+        {
+          "feature": "Vocabulary",
+          "score": 1.809390431997783,
+          "rank": 5
+        },
+        {
+          "feature": "Total Operands",
+          "score": 1.80544849690703,
+          "rank": 6
+        },
+        {
+          "feature": "Length",
+          "score": 1.4496852330621075,
+          "rank": 7
+        },
+        {
+          "feature": "Bugs",
+          "score": 0.9478282596562009,
+          "rank": 8
+        },
+        {
+          "feature": "Volume",
+          "score": 0.947828259656179,
+          "rank": 9
+        },
+        {
+          "feature": "Total Operators",
+          "score": 0.5978545822716262,
+          "rank": 10
+        },
+        {
+          "feature": "Difficulty",
+          "score": 0.584729638957115,
+          "rank": 11
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 0.26781623670124344,
+          "rank": 12
+        },
+        {
+          "feature": "Effort",
+          "score": 0.10317730825186402,
+          "rank": 13
+        },
+        {
+          "feature": "Time Required",
+          "score": 0.10317730825186164,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Cyclomatic Complexity",
+        "Calculated Length",
+        "Distinct Operands",
+        "Vocabulary",
+        "Total Operands",
+        "Length",
+        "Bugs",
+        "Volume",
+        "Total Operators"
+      ]
+    },
+    "xgboost_gain": {
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "score": 54.04352569580078,
+          "rank": 1
+        },
+        {
+          "feature": "Length",
+          "score": 13.571002960205078,
+          "rank": 2
+        },
+        {
+          "feature": "Vocabulary",
+          "score": 11.414985656738281,
+          "rank": 3
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 8.467551231384277,
+          "rank": 4
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 7.101622104644775,
+          "rank": 5
+        },
+        {
+          "feature": "Total Operands",
+          "score": 6.711554527282715,
+          "rank": 6
+        },
+        {
+          "feature": "Total Operators",
+          "score": 6.630453586578369,
+          "rank": 7
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 6.278007507324219,
+          "rank": 8
+        },
+        {
+          "feature": "Volume",
+          "score": 5.885345935821533,
+          "rank": 9
+        },
+        {
+          "feature": "Difficulty",
+          "score": 5.291715621948242,
+          "rank": 10
+        },
+        {
+          "feature": "Effort",
+          "score": 5.266262531280518,
+          "rank": 11
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 4.8788933753967285,
+          "rank": 12
+        },
+        {
+          "feature": "Time Required",
+          "score": 0.0,
+          "rank": 13
+        },
+        {
+          "feature": "Bugs",
+          "score": 0.0,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Length",
+        "Vocabulary",
+        "Cyclomatic Complexity",
+        "Calculated Length",
+        "Total Operands",
+        "Total Operators",
+        "Distinct Operators",
+        "Volume",
+        "Difficulty"
+      ]
+    },
+    "anova_f": {
+      "ranked": [
+        {
+          "feature": "Vocabulary",
+          "score": 5756.492585095397,
+          "rank": 1
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 5713.933428319702,
+          "rank": 2
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 5563.306817126066,
+          "rank": 3
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 3588.8870374897374,
+          "rank": 4
+        },
+        {
+          "feature": "Difficulty",
+          "score": 2947.538261279062,
+          "rank": 5
+        },
+        {
+          "feature": "Total Operators",
+          "score": 57.878477380713676,
+          "rank": 6
+        },
+        {
+          "feature": "Length",
+          "score": 41.494622252879346,
+          "rank": 7
+        },
+        {
+          "feature": "Total Operands",
+          "score": 38.895005985678125,
+          "rank": 8
+        },
+        {
+          "feature": "Logical Lines",
+          "score": 38.29024677298096,
+          "rank": 9
+        },
+        {
+          "feature": "Bugs",
+          "score": 15.695638598884733,
+          "rank": 10
+        },
+        {
+          "feature": "Volume",
+          "score": 15.695638598880103,
+          "rank": 11
+        },
+        {
+          "feature": "Time Required",
+          "score": 2.8782730031933395,
+          "rank": 12
+        },
+        {
+          "feature": "Effort",
+          "score": 2.878273003193042,
+          "rank": 13
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 0.35969686718799804,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Vocabulary",
+        "Distinct Operators",
+        "Distinct Operands",
+        "Calculated Length",
+        "Difficulty",
+        "Total Operators",
+        "Length",
+        "Total Operands",
+        "Logical Lines",
+        "Bugs"
+      ]
+    },
+    "boruta": {
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "score": 1.1903546181962856,
+          "rank": 1
+        },
+        {
+          "feature": "Total Operands",
+          "score": 1.146222839358855,
+          "rank": 2
+        },
+        {
+          "feature": "Length",
+          "score": 1.1224477685455259,
+          "rank": 3
+        },
+        {
+          "feature": "Volume",
+          "score": 1.1090280950030378,
+          "rank": 4
+        },
+        {
+          "feature": "Bugs",
+          "score": 1.1061121350604555,
+          "rank": 5
+        },
+        {
+          "feature": "Time Required",
+          "score": 1.0596346718498062,
+          "rank": 6
+        },
+        {
+          "feature": "Effort",
+          "score": 1.0549901919794173,
+          "rank": 7
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 1.0465146192011339,
+          "rank": 8
+        },
+        {
+          "feature": "Vocabulary",
+          "score": 1.0354277280771775,
+          "rank": 9
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 1.0354156854213414,
+          "rank": 10
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 1.0294812955946826,
+          "rank": 11
+        },
+        {
+          "feature": "Total Operators",
+          "score": 1.0287841736876933,
+          "rank": 12
+        },
+        {
+          "feature": "Difficulty",
+          "score": 1.0187368686528373,
+          "rank": 13
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 1.016849309371751,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Total Operands",
+        "Length",
+        "Volume",
+        "Bugs",
+        "Time Required",
+        "Effort",
+        "Calculated Length",
+        "Vocabulary",
+        "Cyclomatic Complexity"
+      ],
+      "boruta_support": {
+        "Logical Lines": true,
+        "Distinct Operators": true,
+        "Distinct Operands": true,
+        "Total Operators": true,
+        "Total Operands": true,
+        "Vocabulary": true,
+        "Length": true,
+        "Calculated Length": true,
+        "Volume": true,
+        "Difficulty": true,
+        "Effort": true,
+        "Time Required": true,
+        "Bugs": true,
+        "Cyclomatic Complexity": true
+      },
+      "boruta_ranking": {
+        "Logical Lines": 1,
+        "Distinct Operators": 1,
+        "Distinct Operands": 1,
+        "Total Operators": 1,
+        "Total Operands": 1,
+        "Vocabulary": 1,
+        "Length": 1,
+        "Calculated Length": 1,
+        "Volume": 1,
+        "Difficulty": 1,
+        "Effort": 1,
+        "Time Required": 1,
+        "Bugs": 1,
+        "Cyclomatic Complexity": 1
+      },
+      "rf_importance_tiebreak": {
+        "Logical Lines": 0.19035461819628555,
+        "Distinct Operators": 0.016849309371750998,
+        "Distinct Operands": 0.029481295594682662,
+        "Total Operators": 0.028784173687693315,
+        "Total Operands": 0.14622283935885486,
+        "Vocabulary": 0.03542772807717745,
+        "Length": 0.12244776854552583,
+        "Calculated Length": 0.04651461920113385,
+        "Volume": 0.1090280950030378,
+        "Difficulty": 0.018736868652837246,
+        "Effort": 0.054990191979417354,
+        "Time Required": 0.05963467184980621,
+        "Bugs": 0.10611213506045539,
+        "Cyclomatic Complexity": 0.035415685421341374
+      },
+      "note": "Boruta confirmed/rejected shown in boruta_support; ties (Boruta confirms all relevant features here) are broken by a RandomForest importance so the top-10 is discriminative.",
+      "n_sample": 25000
+    }
+  },
+  "pearson_target": {
+    "Logical Lines": 0.018865031864388218,
+    "Distinct Operators": 0.2246042314453564,
+    "Distinct Operands": 0.22177154246003478,
+    "Total Operators": 0.023191694328585286,
+    "Total Operands": 0.019013372694913953,
+    "Vocabulary": 0.22539679888582975,
+    "Length": 0.019638255266799874,
+    "Calculated Length": 0.17969788479300303,
+    "Volume": 0.012079488998041866,
+    "Difficulty": 0.16332380678976477,
+    "Effort": -0.005173100736576456,
+    "Time Required": -0.005173100736576445,
+    "Bugs": 0.012079488998041881,
+    "Cyclomatic Complexity": 0.001828766914652466
+  },
+  "consensus": {
+    "appears_in_top10_counts": {
+      "Logical Lines": 5,
+      "Distinct Operators": 2,
+      "Distinct Operands": 3,
+      "Total Operators": 3,
+      "Total Operands": 5,
+      "Vocabulary": 5,
+      "Length": 5,
+      "Calculated Length": 5,
+      "Volume": 4,
+      "Difficulty": 3,
+      "Effort": 1,
+      "Time Required": 1,
+      "Bugs": 4,
+      "Cyclomatic Complexity": 4
+    },
+    "strict_intersection_5of5": [
+      "Logical Lines",
+      "Total Operands",
+      "Vocabulary",
+      "Length",
+      "Calculated Length"
+    ],
+    "at_least_4of5": [
+      "Logical Lines",
+      "Total Operands",
+      "Vocabulary",
+      "Length",
+      "Calculated Length",
+      "Volume",
+      "Bugs",
+      "Cyclomatic Complexity"
+    ]
+  },
+  "fixes": {
+    "permutation_importance": {
+      "note": "Ours, extra. Mean ROC-AUC drop when a feature is permuted, over the 5 grouped-CV test folds (XGBoost fit per fold). Computed on held-out data, unlike the replication methods which are descriptive on full data.",
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "mean": 0.3242076854578101,
+          "std": 0.05045388083946892
+        },
+        {
+          "feature": "Total Operands",
+          "mean": 0.05310751182271273,
+          "std": 0.019850536933114775
+        },
+        {
+          "feature": "Total Operators",
+          "mean": 0.03460210128798176,
+          "std": 0.007965323557710654
+        },
+        {
+          "feature": "Vocabulary",
+          "mean": 0.02502031345987755,
+          "std": 0.005151916714313684
+        },
+        {
+          "feature": "Volume",
+          "mean": 0.022894100033488112,
+          "std": 0.0047104416483213386
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "mean": 0.022251464244652526,
+          "std": 0.00709388627042893
+        },
+        {
+          "feature": "Effort",
+          "mean": 0.020962722330634995,
+          "std": 0.004226811393014452
+        },
+        {
+          "feature": "Difficulty",
+          "mean": 0.020322221962454805,
+          "std": 0.012696732091015541
+        },
+        {
+          "feature": "Calculated Length",
+          "mean": 0.0184557247190298,
+          "std": 0.015681242832404758
+        },
+        {
+          "feature": "Length",
+          "mean": 0.018148396230517595,
+          "std": 0.005338707227042047
+        },
+        {
+          "feature": "Distinct Operands",
+          "mean": 0.014527911516423913,
+          "std": 0.004038833952372038
+        },
+        {
+          "feature": "Distinct Operators",
+          "mean": 0.01406919047186056,
+          "std": 0.0037509550916569054
+        },
+        {
+          "feature": "Time Required",
+          "mean": 0.0,
+          "std": 0.0
+        },
+        {
+          "feature": "Bugs",
+          "mean": 0.0,
+          "std": 0.0
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Total Operands",
+        "Total Operators",
+        "Vocabulary",
+        "Volume",
+        "Cyclomatic Complexity",
+        "Effort",
+        "Difficulty",
+        "Calculated Length",
+        "Length"
+      ]
+    },
+    "shap": {
+      "ranked": [
+        {
+          "feature": "Logical Lines",
+          "score": 1.1322834491729736,
+          "rank": 1
+        },
+        {
+          "feature": "Effort",
+          "score": 0.520326554775238,
+          "rank": 2
+        },
+        {
+          "feature": "Total Operands",
+          "score": 0.5122362971305847,
+          "rank": 3
+        },
+        {
+          "feature": "Calculated Length",
+          "score": 0.3554368317127228,
+          "rank": 4
+        },
+        {
+          "feature": "Vocabulary",
+          "score": 0.27932167053222656,
+          "rank": 5
+        },
+        {
+          "feature": "Total Operators",
+          "score": 0.2534599006175995,
+          "rank": 6
+        },
+        {
+          "feature": "Difficulty",
+          "score": 0.24573977291584015,
+          "rank": 7
+        },
+        {
+          "feature": "Cyclomatic Complexity",
+          "score": 0.24093887209892273,
+          "rank": 8
+        },
+        {
+          "feature": "Length",
+          "score": 0.23159565031528473,
+          "rank": 9
+        },
+        {
+          "feature": "Distinct Operands",
+          "score": 0.20864775776863098,
+          "rank": 10
+        },
+        {
+          "feature": "Volume",
+          "score": 0.17832531034946442,
+          "rank": 11
+        },
+        {
+          "feature": "Distinct Operators",
+          "score": 0.15579082071781158,
+          "rank": 12
+        },
+        {
+          "feature": "Time Required",
+          "score": 0.0,
+          "rank": 13
+        },
+        {
+          "feature": "Bugs",
+          "score": 0.0,
+          "rank": 14
+        }
+      ],
+      "top10": [
+        "Logical Lines",
+        "Effort",
+        "Total Operands",
+        "Calculated Length",
+        "Vocabulary",
+        "Total Operators",
+        "Difficulty",
+        "Cyclomatic Complexity",
+        "Length",
+        "Distinct Operands"
+      ],
+      "note": "Ours, extra. mean(|SHAP|) from an XGBoost stand-in fit on a stratified 5,000-row sample. The SHAP summary for the actual saved model is regenerated in Phase 5.",
+      "n_sample": 5000
+    },
+    "correlated_pairs_gt_0_9": [
+      {
+        "a": "Total Operands",
+        "b": "Length",
+        "r": 1.0
+      },
+      {
+        "a": "Volume",
+        "b": "Bugs",
+        "r": 1.0
+      },
+      {
+        "a": "Effort",
+        "b": "Time Required",
+        "r": 1.0
+      },
+      {
+        "a": "Distinct Operands",
+        "b": "Vocabulary",
+        "r": 0.9996
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Length",
+        "r": 0.9992
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Total Operands",
+        "r": 0.999
+      },
+      {
+        "a": "Total Operands",
+        "b": "Volume",
+        "r": 0.999
+      },
+      {
+        "a": "Total Operands",
+        "b": "Bugs",
+        "r": 0.999
+      },
+      {
+        "a": "Length",
+        "b": "Volume",
+        "r": 0.999
+      },
+      {
+        "a": "Length",
+        "b": "Bugs",
+        "r": 0.999
+      },
+      {
+        "a": "Total Operators",
+        "b": "Length",
+        "r": 0.9983
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Total Operators",
+        "r": 0.9982
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Volume",
+        "r": 0.9982
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Bugs",
+        "r": 0.9982
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Cyclomatic Complexity",
+        "r": 0.998
+      },
+      {
+        "a": "Total Operators",
+        "b": "Total Operands",
+        "r": 0.9977
+      },
+      {
+        "a": "Total Operators",
+        "b": "Volume",
+        "r": 0.9969
+      },
+      {
+        "a": "Total Operators",
+        "b": "Bugs",
+        "r": 0.9969
+      },
+      {
+        "a": "Length",
+        "b": "Cyclomatic Complexity",
+        "r": 0.9969
+      },
+      {
+        "a": "Total Operands",
+        "b": "Cyclomatic Complexity",
+        "r": 0.9968
+      },
+      {
+        "a": "Volume",
+        "b": "Cyclomatic Complexity",
+        "r": 0.996
+      },
+      {
+        "a": "Bugs",
+        "b": "Cyclomatic Complexity",
+        "r": 0.996
+      },
+      {
+        "a": "Total Operators",
+        "b": "Cyclomatic Complexity",
+        "r": 0.9955
+      },
+      {
+        "a": "Distinct Operands",
+        "b": "Calculated Length",
+        "r": 0.987
+      },
+      {
+        "a": "Vocabulary",
+        "b": "Calculated Length",
+        "r": 0.9838
+      },
+      {
+        "a": "Volume",
+        "b": "Effort",
+        "r": 0.9817
+      },
+      {
+        "a": "Volume",
+        "b": "Time Required",
+        "r": 0.9817
+      },
+      {
+        "a": "Effort",
+        "b": "Bugs",
+        "r": 0.9817
+      },
+      {
+        "a": "Time Required",
+        "b": "Bugs",
+        "r": 0.9817
+      },
+      {
+        "a": "Total Operands",
+        "b": "Effort",
+        "r": 0.9753
+      },
+      {
+        "a": "Total Operands",
+        "b": "Time Required",
+        "r": 0.9753
+      },
+      {
+        "a": "Length",
+        "b": "Effort",
+        "r": 0.9748
+      },
+      {
+        "a": "Length",
+        "b": "Time Required",
+        "r": 0.9748
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Effort",
+        "r": 0.9716
+      },
+      {
+        "a": "Logical Lines",
+        "b": "Time Required",
+        "r": 0.9716
+      },
+      {
+        "a": "Total Operators",
+        "b": "Effort",
+        "r": 0.9704
+      },
+      {
+        "a": "Total Operators",
+        "b": "Time Required",
+        "r": 0.9704
+      },
+      {
+        "a": "Effort",
+        "b": "Cyclomatic Complexity",
+        "r": 0.9682
+      },
+      {
+        "a": "Time Required",
+        "b": "Cyclomatic Complexity",
+        "r": 0.9682
+      }
+    ],
+    "coef_caveat": "Linear/Logistic coef rankings are unstable here: nearly all metrics are |r|>0.9 collinear (several exactly 1.0), so coefficient mass is split arbitrarily among near-duplicates. Prefer the tree/permutation/SHAP rankings for interpretation."
+  },
+  "paper_comparison": {
+    "paper_core_metrics": [
+      "CountStmtExe",
+      "SumCyclomatic",
+      "SumCyclomaticModified",
+      "AvgCyclomaticModified",
+      "CountDeclClass",
+      "CountLineCode"
+    ],
+    "note": "The paper's core metrics are SciTools Understand metrics (size + cyclomatic families) that do not exist in SmellyCode++, so a name-level intersection is empty by construction. We compare at the family level: whether size/cyclomatic metrics dominate our consensus, mirroring the paper's size+cyclomatic core."
+  }
+}

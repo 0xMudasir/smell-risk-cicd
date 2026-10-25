@@ -1,0 +1,719 @@
+{
+  "generated_at": "2026-10-25T09:30:56.300293+00:00",
+  "raw_file": "data\\raw\\multi-smell-dataset-v1_2.csv",
+  "seed": 42,
+  "shape": {
+    "rows": 107554,
+    "columns_total": 22,
+    "columns_loaded": 21,
+    "note": "'Code' column not loaded (raw source text)"
+  },
+  "columns": {
+    "identifiers": [
+      "File",
+      "Project",
+      "Class"
+    ],
+    "source_text": "Code",
+    "numeric_metrics": [
+      "Logical Lines",
+      "Distinct Operators",
+      "Distinct Operands",
+      "Total Operators",
+      "Total Operands",
+      "Vocabulary",
+      "Length",
+      "Calculated Length",
+      "Volume",
+      "Difficulty",
+      "Effort",
+      "Time Required",
+      "Bugs",
+      "Cyclomatic Complexity"
+    ],
+    "smell_labels": [
+      "Long method",
+      "God class",
+      "Feature envy",
+      "Data class"
+    ],
+    "target": "has_smell (derived)"
+  },
+  "dtypes": {
+    "File": "str",
+    "Project": "str",
+    "Logical Lines": "int64",
+    "Distinct Operators": "int64",
+    "Distinct Operands": "int64",
+    "Total Operators": "int64",
+    "Total Operands": "int64",
+    "Vocabulary": "int64",
+    "Length": "int64",
+    "Calculated Length": "float64",
+    "Volume": "float64",
+    "Difficulty": "float64",
+    "Effort": "float64",
+    "Time Required": "float64",
+    "Bugs": "float64",
+    "Cyclomatic Complexity": "int64",
+    "Class": "str",
+    "Long method": "int64",
+    "God class": "int64",
+    "Feature envy": "int64",
+    "Data class": "int64"
+  },
+  "missing": {
+    "File": 0,
+    "Project": 0,
+    "Logical Lines": 0,
+    "Distinct Operators": 0,
+    "Distinct Operands": 0,
+    "Total Operators": 0,
+    "Total Operands": 0,
+    "Vocabulary": 0,
+    "Length": 0,
+    "Calculated Length": 0,
+    "Volume": 0,
+    "Difficulty": 0,
+    "Effort": 0,
+    "Time Required": 0,
+    "Bugs": 0,
+    "Cyclomatic Complexity": 0,
+    "Class": 0,
+    "Long method": 0,
+    "God class": 0,
+    "Feature envy": 0,
+    "Data class": 0
+  },
+  "missing_total": 0,
+  "smell_value_sets": {
+    "Long method": [
+      0,
+      1
+    ],
+    "God class": [
+      0,
+      1
+    ],
+    "Feature envy": [
+      0,
+      1
+    ],
+    "Data class": [
+      0,
+      1
+    ]
+  },
+  "target_has_smell": {
+    "positives": 9918,
+    "negatives": 97636,
+    "rate": 0.09221414359298585
+  },
+  "per_smell": {
+    "Long method": {
+      "positives": 1566,
+      "rate": 0.014560127935734607
+    },
+    "God class": {
+      "positives": 4333,
+      "rate": 0.04028673968425163
+    },
+    "Feature envy": {
+      "positives": 1996,
+      "rate": 0.018558119642226232
+    },
+    "Data class": {
+      "positives": 3284,
+      "rate": 0.030533499451438347
+    }
+  },
+  "smells_per_row": {
+    "0": 97636,
+    "1": 8657,
+    "2": 1261
+  },
+  "cooccurrence": {
+    "Long method": {
+      "Long method": 1566,
+      "God class": 0,
+      "Feature envy": 1153,
+      "Data class": 0
+    },
+    "God class": {
+      "Long method": 0,
+      "God class": 4333,
+      "Feature envy": 0,
+      "Data class": 108
+    },
+    "Feature envy": {
+      "Long method": 1153,
+      "God class": 0,
+      "Feature envy": 1996,
+      "Data class": 0
+    },
+    "Data class": {
+      "Long method": 0,
+      "God class": 108,
+      "Feature envy": 0,
+      "Data class": 3284
+    }
+  },
+  "duplicates": {
+    "exact_on_metrics_and_labels": 42883,
+    "duplicate_identifier_rows": 25068,
+    "identifier_cols_used": [
+      "File",
+      "Project",
+      "Class"
+    ],
+    "dup_rows_logical_lines_median": 2.0
+  },
+  "granularity": {
+    "identifier_cols": [
+      "File",
+      "Project",
+      "Class"
+    ],
+    "n_unique_identifiers": 82486,
+    "n_identifiers_repeated": 25013,
+    "max_rows_per_identifier": 17,
+    "method_level_smells": [
+      "Long method",
+      "Feature envy"
+    ],
+    "class_level_smells": [
+      "God class",
+      "Data class"
+    ],
+    "rows_positive_for_both_families": 0,
+    "dedup_identifier_only_rows": 82486
+  },
+  "projects": {
+    "n_projects": 89,
+    "top": [
+      {
+        "Project": "jena",
+        "files": 4979,
+        "smelly": 244,
+        "smelly_rate": 0.04900582446274352
+      },
+      {
+        "Project": "hive",
+        "files": 4851,
+        "smelly": 444,
+        "smelly_rate": 0.09152752009894867
+      },
+      {
+        "Project": "hadoop",
+        "files": 4336,
+        "smelly": 196,
+        "smelly_rate": 0.045202952029520294
+      },
+      {
+        "Project": "hbase",
+        "files": 4288,
+        "smelly": 226,
+        "smelly_rate": 0.052705223880597014
+      },
+      {
+        "Project": "nifi",
+        "files": 3873,
+        "smelly": 417,
+        "smelly_rate": 0.10766847405112316
+      },
+      {
+        "Project": "activemq",
+        "files": 3802,
+        "smelly": 289,
+        "smelly_rate": 0.07601262493424514
+      },
+      {
+        "Project": "accumulo",
+        "files": 3786,
+        "smelly": 346,
+        "smelly_rate": 0.09138932910723718
+      },
+      {
+        "Project": "beam",
+        "files": 3726,
+        "smelly": 147,
+        "smelly_rate": 0.039452495974235106
+      },
+      {
+        "Project": "openjpa",
+        "files": 3604,
+        "smelly": 433,
+        "smelly_rate": 0.12014428412874584
+      },
+      {
+        "Project": "cxf",
+        "files": 3454,
+        "smelly": 405,
+        "smelly_rate": 0.11725535610885929
+      },
+      {
+        "Project": "cayenne",
+        "files": 3031,
+        "smelly": 298,
+        "smelly_rate": 0.09831738700098977
+      },
+      {
+        "Project": "airavata",
+        "files": 2893,
+        "smelly": 604,
+        "smelly_rate": 0.208779813342551
+      },
+      {
+        "Project": "drill",
+        "files": 2419,
+        "smelly": 89,
+        "smelly_rate": 0.03679206283588259
+      },
+      {
+        "Project": "calcite",
+        "files": 2416,
+        "smelly": 102,
+        "smelly_rate": 0.042218543046357616
+      },
+      {
+        "Project": "cocoon",
+        "files": 2011,
+        "smelly": 184,
+        "smelly_rate": 0.09149676777722526
+      },
+      {
+        "Project": "fop",
+        "files": 2008,
+        "smelly": 160,
+        "smelly_rate": 0.0796812749003984
+      },
+      {
+        "Project": "kafka",
+        "files": 1964,
+        "smelly": 102,
+        "smelly_rate": 0.051934826883910386
+      },
+      {
+        "Project": "wicket",
+        "files": 1929,
+        "smelly": 158,
+        "smelly_rate": 0.08190772420943494
+      },
+      {
+        "Project": "jackrabbit",
+        "files": 1908,
+        "smelly": 209,
+        "smelly_rate": 0.10953878406708595
+      },
+      {
+        "Project": "isis",
+        "files": 1868,
+        "smelly": 170,
+        "smelly_rate": 0.09100642398286937
+      },
+      {
+        "Project": "tomcat",
+        "files": 1692,
+        "smelly": 204,
+        "smelly_rate": 0.12056737588652482
+      },
+      {
+        "Project": "pulsar",
+        "files": 1677,
+        "smelly": 90,
+        "smelly_rate": 0.05366726296958855
+      },
+      {
+        "Project": "tajo",
+        "files": 1576,
+        "smelly": 135,
+        "smelly_rate": 0.08565989847715735
+      },
+      {
+        "Project": "storm",
+        "files": 1520,
+        "smelly": 108,
+        "smelly_rate": 0.07105263157894737
+      },
+      {
+        "Project": "syncope",
+        "files": 1508,
+        "smelly": 194,
+        "smelly_rate": 0.1286472148541114
+      }
+    ],
+    "files_min": 1,
+    "files_max": 4979,
+    "files_median": 735.0
+  },
+  "metric_map": {
+    "Logical Lines": {
+      "family": "size",
+      "paper_understand": "CountLineCode / CountStmt (closest)",
+      "note": "size metric; paper's size family"
+    },
+    "Distinct Operators": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Halstead n1"
+    },
+    "Distinct Operands": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Halstead n2"
+    },
+    "Total Operators": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Halstead N1"
+    },
+    "Total Operands": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Halstead N2"
+    },
+    "Vocabulary": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "n1+n2 (deterministic)"
+    },
+    "Length": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "N1+N2 (deterministic)"
+    },
+    "Calculated Length": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "n1*log2 n1 + n2*log2 n2 (deterministic)"
+    },
+    "Volume": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Length*log2 Vocabulary (deterministic)"
+    },
+    "Difficulty": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "(n1/2)*(N2/n2) (deterministic)"
+    },
+    "Effort": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Difficulty*Volume (deterministic)"
+    },
+    "Time Required": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Effort/18 (deterministic)"
+    },
+    "Bugs": {
+      "family": "halstead",
+      "paper_understand": "none",
+      "note": "Halstead delivered-bugs estimate = Volume/3000 (deterministic); NOT a label"
+    },
+    "Cyclomatic Complexity": {
+      "family": "cyclomatic",
+      "paper_understand": "SumCyclomatic (closest)",
+      "note": "paper's core cyclomatic family"
+    }
+  },
+  "correlated_pairs_gt_0_9": [
+    {
+      "a": "Total Operands",
+      "b": "Length",
+      "r": 1.0
+    },
+    {
+      "a": "Volume",
+      "b": "Bugs",
+      "r": 1.0
+    },
+    {
+      "a": "Effort",
+      "b": "Time Required",
+      "r": 1.0
+    },
+    {
+      "a": "Distinct Operands",
+      "b": "Vocabulary",
+      "r": 0.9996
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Length",
+      "r": 0.9992
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Total Operands",
+      "r": 0.999
+    },
+    {
+      "a": "Total Operands",
+      "b": "Volume",
+      "r": 0.999
+    },
+    {
+      "a": "Total Operands",
+      "b": "Bugs",
+      "r": 0.999
+    },
+    {
+      "a": "Length",
+      "b": "Volume",
+      "r": 0.999
+    },
+    {
+      "a": "Length",
+      "b": "Bugs",
+      "r": 0.999
+    },
+    {
+      "a": "Total Operators",
+      "b": "Length",
+      "r": 0.9983
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Total Operators",
+      "r": 0.9982
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Volume",
+      "r": 0.9982
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Bugs",
+      "r": 0.9982
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Cyclomatic Complexity",
+      "r": 0.998
+    },
+    {
+      "a": "Total Operators",
+      "b": "Total Operands",
+      "r": 0.9977
+    },
+    {
+      "a": "Total Operators",
+      "b": "Volume",
+      "r": 0.9969
+    },
+    {
+      "a": "Total Operators",
+      "b": "Bugs",
+      "r": 0.9969
+    },
+    {
+      "a": "Length",
+      "b": "Cyclomatic Complexity",
+      "r": 0.9969
+    },
+    {
+      "a": "Total Operands",
+      "b": "Cyclomatic Complexity",
+      "r": 0.9968
+    },
+    {
+      "a": "Volume",
+      "b": "Cyclomatic Complexity",
+      "r": 0.996
+    },
+    {
+      "a": "Bugs",
+      "b": "Cyclomatic Complexity",
+      "r": 0.996
+    },
+    {
+      "a": "Total Operators",
+      "b": "Cyclomatic Complexity",
+      "r": 0.9955
+    },
+    {
+      "a": "Distinct Operands",
+      "b": "Calculated Length",
+      "r": 0.987
+    },
+    {
+      "a": "Vocabulary",
+      "b": "Calculated Length",
+      "r": 0.9838
+    },
+    {
+      "a": "Volume",
+      "b": "Effort",
+      "r": 0.9817
+    },
+    {
+      "a": "Volume",
+      "b": "Time Required",
+      "r": 0.9817
+    },
+    {
+      "a": "Effort",
+      "b": "Bugs",
+      "r": 0.9817
+    },
+    {
+      "a": "Time Required",
+      "b": "Bugs",
+      "r": 0.9817
+    },
+    {
+      "a": "Total Operands",
+      "b": "Effort",
+      "r": 0.9753
+    },
+    {
+      "a": "Total Operands",
+      "b": "Time Required",
+      "r": 0.9753
+    },
+    {
+      "a": "Length",
+      "b": "Effort",
+      "r": 0.9748
+    },
+    {
+      "a": "Length",
+      "b": "Time Required",
+      "r": 0.9748
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Effort",
+      "r": 0.9716
+    },
+    {
+      "a": "Logical Lines",
+      "b": "Time Required",
+      "r": 0.9716
+    },
+    {
+      "a": "Total Operators",
+      "b": "Effort",
+      "r": 0.9704
+    },
+    {
+      "a": "Total Operators",
+      "b": "Time Required",
+      "r": 0.9704
+    },
+    {
+      "a": "Effort",
+      "b": "Cyclomatic Complexity",
+      "r": 0.9682
+    },
+    {
+      "a": "Time Required",
+      "b": "Cyclomatic Complexity",
+      "r": 0.9682
+    }
+  ],
+  "separability": {
+    "Logical Lines": {
+      "clean_median": 7.0,
+      "smelly_median": 56.0,
+      "clean_mean": 61.95518046622148,
+      "smelly_mean": 132.92115345835853,
+      "cohen_d": 0.0652
+    },
+    "Distinct Operators": {
+      "clean_median": 2.0,
+      "smelly_median": 5.0,
+      "clean_mean": 3.128036789708714,
+      "smelly_mean": 5.506553740673523,
+      "cohen_d": 0.7763
+    },
+    "Distinct Operands": {
+      "clean_median": 18.0,
+      "smelly_median": 66.0,
+      "clean_mean": 38.11582817813102,
+      "smelly_mean": 110.30328695301472,
+      "cohen_d": 0.7665
+    },
+    "Total Operators": {
+      "clean_median": 6.0,
+      "smelly_median": 52.0,
+      "clean_mean": 62.72294030890245,
+      "smelly_mean": 144.78513813268805,
+      "cohen_d": 0.0802
+    },
+    "Total Operands": {
+      "clean_median": 33.0,
+      "smelly_median": 252.0,
+      "clean_mean": 333.30558400589945,
+      "smelly_mean": 719.9796329905223,
+      "cohen_d": 0.0657
+    },
+    "Vocabulary": {
+      "clean_median": 20.0,
+      "smelly_median": 71.0,
+      "clean_mean": 41.243864967839734,
+      "smelly_mean": 115.80984069368824,
+      "cohen_d": 0.779
+    },
+    "Length": {
+      "clean_median": 40.0,
+      "smelly_median": 314.0,
+      "clean_mean": 396.0285243148019,
+      "smelly_mean": 864.7647711232104,
+      "cohen_d": 0.0679
+    },
+    "Calculated Length": {
+      "clean_median": 75.60964047443682,
+      "smelly_median": 411.1828632628342,
+      "clean_mean": 250.68009378870275,
+      "smelly_mean": 843.0479304176781,
+      "cohen_d": 0.6211
+    },
+    "Volume": {
+      "clean_median": 171.67343933251425,
+      "smelly_median": 1931.182629540585,
+      "clean_mean": 3637.194409222263,
+      "smelly_mean": 6876.48577871855,
+      "cohen_d": 0.0418
+    },
+    "Difficulty": {
+      "clean_median": 2.4,
+      "smelly_median": 10.023456790123458,
+      "clean_mean": 5.657214873329457,
+      "smelly_mean": 15.144420481453531,
+      "cohen_d": 0.5645
+    },
+    "Effort": {
+      "clean_median": 367.97672085205056,
+      "smelly_median": 18876.989877628635,
+      "clean_mean": 1070114.86474674,
+      "smelly_mean": 436492.13335186813,
+      "cohen_d": -0.0179
+    },
+    "Time Required": {
+      "clean_median": 20.443151158447257,
+      "smelly_median": 1048.7216598682576,
+      "clean_mean": 59450.825819263344,
+      "smelly_mean": 24249.56296399267,
+      "cohen_d": -0.0179
+    },
+    "Bugs": {
+      "clean_median": 0.0572244797775047,
+      "smelly_median": 0.6437275431801949,
+      "clean_mean": 1.212398136407421,
+      "smelly_mean": 2.2921619262395168,
+      "cohen_d": 0.0418
+    },
+    "Cyclomatic Complexity": {
+      "clean_median": 2.0,
+      "smelly_median": 12.0,
+      "clean_mean": 35.34823220943095,
+      "smelly_mean": 40.29985884250857,
+      "cohen_d": 0.0063
+    }
+  },
+  "date_columns_detected": []
+}

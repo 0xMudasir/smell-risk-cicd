@@ -1,0 +1,44 @@
+{
+  "generated_at": "2026-10-25T09:42:34.783448+00:00",
+  "clean_parquet": "data/processed/clean.parquet",
+  "rows": 107554,
+  "deduplicated": false,
+  "n_features": 14,
+  "feature_columns": [
+    "Logical Lines",
+    "Distinct Operators",
+    "Distinct Operands",
+    "Total Operators",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Difficulty",
+    "Effort",
+    "Time Required",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "identifier_columns": [
+    "File",
+    "Project",
+    "Class"
+  ],
+  "smell_label_columns": [
+    "Long method",
+    "God class",
+    "Feature envy",
+    "Data class"
+  ],
+  "target": "has_smell",
+  "target_positive": 9918,
+  "target_rate": 0.09221414359298585,
+  "per_smell_rate": {
+    "Long method": 0.014560127935734607,
+    "God class": 0.04028673968425163,
+    "Feature envy": 0.018558119642226232,
+    "Data class": 0.030533499451438347
+  },
+  "n_projects": 89
+}
