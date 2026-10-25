@@ -20,6 +20,8 @@ Dataset identified as **SmellyCode++** (107,554 rows, 89 Java projects, 4 smells
 9.22% smelly). Full profile in `ml/reports/dataset_audit.md`. CV =
 `StratifiedGroupKFold` grouped on `Project` (zero train/test project overlap).
 RQ1: size + cyclomatic families dominate, mirroring the paper (`ml/reports/rq1_summary.md`).
+RQ2: large effect sizes, smelly medians 3.6-11x clean; single-metric thresholds
+are weak classifiers (F1 ~0.3) (`ml/reports/rq2_summary.md`).
 
 | Phase | Goal | State |
 |---|---|---|
@@ -27,8 +29,8 @@ RQ1: size + cyclomatic families dominate, mirroring the paper (`ml/reports/rq1_s
 | P1 | Dataset audit | done |
 | P2 | Preprocess + CV | done |
 | P3 | RQ1 feature importance | done |
-| P4 | RQ2 statistics + thresholds | next |
-| P5 | RQ3 models + final model | |
+| P4 | RQ2 statistics + thresholds | done |
+| P5 | RQ3 models + final model | next |
 | P6 | Paper review + export | |
 | P7 | Flask API | |
 | P8 | Angular UI | |

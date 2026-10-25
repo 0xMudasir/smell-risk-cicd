@@ -1,0 +1,249 @@
+{
+  "generated_at": "2026-10-25T09:52:54.402946+00:00",
+  "seed": 42,
+  "consensus_metrics": [
+    "Logical Lines",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "target": "has_smell",
+  "n_clean": 97636,
+  "n_smelly": 9918,
+  "balanced_undersample_n_per_class": 9918,
+  "notes": {
+    "effect_bands": "rank-biserial |r|: <0.1 negligible, 0.1 small, 0.3 medium, 0.5 large",
+    "thresholds": "warning = smelly median, critical = smelly Q3 (paper rule). as_classifier_cv evaluates 'metric > threshold' on grouped-CV test folds with thresholds fit on the train fold (the paper never validates thresholds).",
+    "mann_whitney": "two-sided; full data and a balanced random undersample (seed 42)."
+  },
+  "stats": {
+    "Logical Lines": {
+      "clean": {
+        "count": 97636,
+        "mean": 61.95518046622148,
+        "std": 1132.73060712529,
+        "min": 0.0,
+        "q1": 2.0,
+        "median": 7.0,
+        "q3": 28.0,
+        "max": 69292.0,
+        "p90": 65.0,
+        "p95": 97.0
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 132.92115345835853,
+        "std": 458.8675597210205,
+        "min": 1.0,
+        "q1": 20.0,
+        "median": 56.0,
+        "q3": 163.0,
+        "max": 35697.0,
+        "p90": 301.3000000000011,
+        "p95": 429.14999999999964
+      },
+      "median_ratio_smelly_over_clean": 8.0,
+      "approx_3x_rule": false
+    },
+    "Total Operands": {
+      "clean": {
+        "count": 97636,
+        "mean": 333.30558400589945,
+        "std": 6115.871750419912,
+        "min": 0.0,
+        "q1": 8.0,
+        "median": 33.0,
+        "q3": 147.0,
+        "max": 383408.0,
+        "p90": 344.0,
+        "p95": 532.0
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 719.9796329905223,
+        "std": 2665.598611463343,
+        "min": 1.0,
+        "q1": 82.0,
+        "median": 252.0,
+        "q3": 831.0,
+        "max": 196701.0,
+        "p90": 1631.2000000000044,
+        "p95": 2452.7999999999956
+      },
+      "median_ratio_smelly_over_clean": 7.636,
+      "approx_3x_rule": false
+    },
+    "Vocabulary": {
+      "clean": {
+        "count": 97636,
+        "mean": 41.243864967839734,
+        "std": 86.59688168048014,
+        "min": 0.0,
+        "q1": 7.0,
+        "median": 20.0,
+        "q3": 53.0,
+        "max": 3245.0,
+        "p90": 98.0,
+        "p95": 134.0
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 115.80984069368824,
+        "std": 143.11887414554852,
+        "min": 1.0,
+        "q1": 31.0,
+        "median": 71.0,
+        "q3": 156.0,
+        "max": 5123.0,
+        "p90": 258.0,
+        "p95": 347.14999999999964
+      },
+      "median_ratio_smelly_over_clean": 3.55,
+      "approx_3x_rule": true
+    },
+    "Length": {
+      "clean": {
+        "count": 97636,
+        "mean": 396.0285243148019,
+        "std": 7178.696916078219,
+        "min": 0.0,
+        "q1": 10.0,
+        "median": 40.0,
+        "q3": 178.0,
+        "max": 448728.0,
+        "p90": 425.0,
+        "p95": 649.0
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 864.7647711232104,
+        "std": 3108.7027153090908,
+        "min": 1.0,
+        "q1": 100.0,
+        "median": 314.0,
+        "q3": 1013.0,
+        "max": 229388.0,
+        "p90": 1988.0,
+        "p95": 2992.7999999999956
+      },
+      "median_ratio_smelly_over_clean": 7.85,
+      "approx_3x_rule": false
+    },
+    "Calculated Length": {
+      "clean": {
+        "count": 97636,
+        "mean": 250.68009378870275,
+        "std": 876.6967113605149,
+        "min": 0.0,
+        "q1": 15.509775004326936,
+        "median": 75.60964047443682,
+        "q3": 283.58797503894243,
+        "max": 37760.27603291639,
+        "p90": 614.3940231610197,
+        "p95": 903.1372703609896
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 843.0479304176781,
+        "std": 1407.1382653267726,
+        "min": 0.0,
+        "q1": 142.6059378176129,
+        "median": 411.1828632628342,
+        "q3": 1090.9990981130843,
+        "max": 63016.21763008605,
+        "p90": 2010.5698060979328,
+        "p95": 2863.6478145475385
+      },
+      "median_ratio_smelly_over_clean": 5.438,
+      "approx_3x_rule": false
+    },
+    "Volume": {
+      "clean": {
+        "count": 97636,
+        "mean": 3637.194409222263,
+        "std": 80740.73918874127,
+        "min": 0.0,
+        "q1": 28.07354922057604,
+        "median": 171.67343933251425,
+        "q3": 1024.5598053287767,
+        "max": 5233964.631784534,
+        "p90": 2785.3545013082125,
+        "p95": 4483.889516576235
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 6876.48577871855,
+        "std": 33111.41645293574,
+        "min": 0.0,
+        "q1": 495.53453366637433,
+        "median": 1931.1826295405845,
+        "q3": 7364.191575968007,
+        "max": 2606041.990945805,
+        "p90": 15631.52516224132,
+        "p95": 24127.80998930883
+      },
+      "median_ratio_smelly_over_clean": 11.249,
+      "approx_3x_rule": false
+    },
+    "Bugs": {
+      "clean": {
+        "count": 97636,
+        "mean": 1.212398136407421,
+        "std": 26.913579729580423,
+        "min": 0.0,
+        "q1": 0.009357849740192,
+        "median": 0.0572244797775047,
+        "q3": 0.3415199351095923,
+        "max": 1744.6548772615113,
+        "p90": 0.9284515004360709,
+        "p95": 1.494629838858745
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 2.2921619262395168,
+        "std": 11.037138817645243,
+        "min": 0.0,
+        "q1": 0.1651781778887914,
+        "median": 0.6437275431801949,
+        "q3": 2.4547305253226694,
+        "max": 868.6806636486016,
+        "p90": 5.210508387413773,
+        "p95": 8.04260332976961
+      },
+      "median_ratio_smelly_over_clean": 11.249,
+      "approx_3x_rule": false
+    },
+    "Cyclomatic Complexity": {
+      "clean": {
+        "count": 97636,
+        "mean": 35.34823220943095,
+        "std": 815.9429414616268,
+        "min": 1.0,
+        "q1": 1.0,
+        "median": 2.0,
+        "q3": 7.0,
+        "max": 49344.0,
+        "p90": 18.0,
+        "p95": 30.0
+      },
+      "smelly": {
+        "count": 9918,
+        "mean": 40.29985884250857,
+        "std": 318.2622997164016,
+        "min": 1.0,
+        "q1": 4.0,
+        "median": 12.0,
+        "q3": 39.0,
+        "max": 26083.0,
+        "p90": 91.0,
+        "p95": 137.0
+      },
+      "median_ratio_smelly_over_clean": 6.0,
+      "approx_3x_rule": false
+    }
+  }
+}

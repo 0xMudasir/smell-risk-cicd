@@ -112,3 +112,31 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** Full data for all (Boruta fits many RF ensembles - minutes per run).
 - **Reason:** RQ1 importance is descriptive (CLAUDE.md 4.3), so a stratified subsample for the expensive methods is acceptable and keeps the script re-runnable in under a minute. Sample sizes are recorded in the JSON.
 - **Effect:** Reproducible with seed 42; sample sizes noted in `rq1_importance.json` and `rq1_summary.md`.
+
+---
+
+## Phase 4 - RQ2 statistics and thresholds
+
+### D4.1 RQ2 metric set = the >=4/5 RQ1 consensus (8 metrics)
+- **Decision:** Run RQ2 over Logical Lines, Total Operands, Vocabulary, Length, Calculated Length, Volume, Bugs, Cyclomatic Complexity.
+- **Alternatives:** Strict 5/5 consensus only (5 metrics); all 14.
+- **Reason:** The strict set omits Cyclomatic Complexity, which is the one metric that maps to the paper's cyclomatic core and is needed for the family comparison. The >=4/5 set keeps it while staying focused. Volume and Bugs are collinear (Bugs = Volume/3000) and give identical stats - kept for completeness, flagged as redundant.
+- **Effect:** 8 metrics in all RQ2 outputs and the UI threshold rulers.
+
+### D4.2 Validate thresholds leakage-safely (fit on train fold, score on test fold)
+- **Decision:** For the threshold-as-classifier fix, compute warning/critical/Youden thresholds on each CV **train** fold and score "metric > threshold" on the held-out **test** fold; report mean +/- std.
+- **Alternatives:** Compute the threshold on all data and score on all data (what a naive reading of the paper's rule would do).
+- **Reason:** Scoring a threshold on the same data it was derived from is optimistic. Fitting on train and scoring on test gives an honest estimate and matches the Section 4.3 leakage rules.
+- **Effect:** `as_classifier_cv` block per metric. Shows single-metric F1 ~0.3, i.e. thresholds are descriptive, not detectors.
+
+### D4.3 Add Youden-J threshold; report that it trades precision for recall
+- **Decision:** Add a ROC Youden-J threshold per metric alongside the paper's median/Q3 rule.
+- **Alternatives:** Report only the paper's thresholds.
+- **Reason:** CLAUDE.md 4.5 asks for an ROC-derived comparison. Youden maximises TPR-FPR, which at a 9% base rate picks a low threshold with high recall (0.63-0.89) but poor precision (0.15-0.20) and lower F1 than the median/Q3 rules - a useful, honest contrast documented in `rq2_summary.md`.
+- **Effect:** Three threshold types per metric in `rq2_thresholds.json`; the UI can offer the trade-off.
+
+### D4.4 "3x rule" reported as a pattern, with our actual ratios
+- **Decision:** Report the smelly/clean median ratio per metric and flag approximate-3x (2-4x), rather than asserting the paper's exact 3x.
+- **Alternatives:** Claim we reproduced "the 3x rule".
+- **Reason:** Rule 2 (never invent numbers). Our ratios are 3.6x-11x, usually larger than the paper's 3x; the amplification *pattern* holds but the magnitude differs (different target).
+- **Effect:** `median_ratio_smelly_over_clean` + `approx_3x_rule` per metric; narrative in `rq2_summary.md`.

@@ -1,0 +1,201 @@
+{
+  "generated_at": "2026-10-25T09:52:54.402946+00:00",
+  "seed": 42,
+  "consensus_metrics": [
+    "Logical Lines",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "target": "has_smell",
+  "n_clean": 97636,
+  "n_smelly": 9918,
+  "balanced_undersample_n_per_class": 9918,
+  "notes": {
+    "effect_bands": "rank-biserial |r|: <0.1 negligible, 0.1 small, 0.3 medium, 0.5 large",
+    "thresholds": "warning = smelly median, critical = smelly Q3 (paper rule). as_classifier_cv evaluates 'metric > threshold' on grouped-CV test folds with thresholds fit on the train fold (the paper never validates thresholds).",
+    "mann_whitney": "two-sided; full data and a balanced random undersample (seed 42)."
+  },
+  "tests": {
+    "Logical Lines": {
+      "full": {
+        "U": 778201875.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.8036337921383465,
+        "rank_biserial": 0.607267584276693,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 79229727.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.8054525379944543,
+        "rank_biserial": 0.6109050759889085,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Total Operands": {
+      "full": {
+        "U": 766672790.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.7917279324943624,
+        "rank_biserial": 0.5834558649887247,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 78087836.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7938440239201217,
+        "rank_biserial": 0.5876880478402433,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Vocabulary": {
+      "full": {
+        "U": 745784991.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.7701575127112006,
+        "rank_biserial": 0.5403150254224012,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 76018018.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7728021774924618,
+        "rank_biserial": 0.5456043549849237,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Length": {
+      "full": {
+        "U": 766011423.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.7910449522992963,
+        "rank_biserial": 0.5820899045985926,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 78027077.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7932263506101921,
+        "rank_biserial": 0.5864527012203842,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Calculated Length": {
+      "full": {
+        "U": 746275729.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.7706642882055238,
+        "rank_biserial": 0.5413285764110476,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 76049445.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7731216656152948,
+        "rank_biserial": 0.5462433312305897,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Volume": {
+      "full": {
+        "U": 763752620.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.788712330804927,
+        "rank_biserial": 0.577424661609854,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 77804344.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7909620381380191,
+        "rank_biserial": 0.5819240762760383,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Bugs": {
+      "full": {
+        "U": 763752620.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.788712330804927,
+        "rank_biserial": 0.577424661609854,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 77804344.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7909620381380191,
+        "rank_biserial": 0.5819240762760383,
+        "effect_magnitude": "large",
+        "p_holm": 0.0
+      }
+    },
+    "Cyclomatic Complexity": {
+      "full": {
+        "U": 723221930.5,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 97636,
+        "cles": 0.7468570832797475,
+        "rank_biserial": 0.49371416655949507,
+        "effect_magnitude": "medium",
+        "p_holm": 0.0
+      },
+      "balanced_undersample": {
+        "U": 73717303.0,
+        "p": 0.0,
+        "n_smelly": 9918,
+        "n_clean": 9918,
+        "cles": 0.7494130128802501,
+        "rank_biserial": 0.49882602576050017,
+        "effect_magnitude": "medium",
+        "p_holm": 0.0
+      }
+    }
+  }
+}
