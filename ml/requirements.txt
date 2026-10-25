@@ -1,6 +1,7 @@
 # ML pipeline dependencies. Pinned in Phase 2 against a verified install
-# (local Python 3.13.12; CI target Python 3.11 - all versions below publish
-# cp311 wheels, confirmed by the CI model-smoke job in Phase 9).
+# (local Python 3.13.12). This is a Python 3.12+ stack (numpy 2.5.x drops 3.11),
+# so CI runs Python 3.13 too; the CI model-smoke job confirms model.joblib loads
+# (see docs/DECISIONS.md D9.4).
 #
 # RULE 6 (CLAUDE.md): the four load-critical libraries MUST stay pinned to the
 # SAME versions here and in backend/requirements.txt, or model.joblib will not
