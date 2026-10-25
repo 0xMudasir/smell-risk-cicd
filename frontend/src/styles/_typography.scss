@@ -9,9 +9,17 @@ body {
 }
 
 h1, h2, h3 { font-weight: 600; line-height: 1.25; margin: 0 0 .5rem; }
-h1 { font-size: 24px; }   // page title
+h1 {
+  font-size: 26px;
+  font-weight: 700;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+}
 h2 { font-size: 20px; }
-h3 { font-size: 16px; }
+h3 { font-size: 16px; color: var(--ink); }
 
 .t-12 { font-size: 12px; }
 .t-13 { font-size: 13px; }

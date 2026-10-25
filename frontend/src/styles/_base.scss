@@ -19,6 +19,7 @@ a:hover { text-decoration: underline; }
   border: 1px solid var(--rule);
   border-radius: var(--radius-lg);
   padding: 16px;
+  box-shadow: var(--shadow-sm);
 }
 
 .stack { display: flex; flex-direction: column; gap: 16px; }
@@ -35,9 +36,9 @@ a:hover { text-decoration: underline; }
   color: var(--ink);
   cursor: pointer;
 }
-.btn:hover { border-color: var(--accent); }
-.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-.btn-primary:hover { filter: brightness(1.08); text-decoration: none; }
+.btn:hover { border-color: var(--accent); color: var(--accent); }
+.btn-primary { background: var(--grad-primary); color: #fff; border-color: transparent; box-shadow: var(--shadow-md); }
+.btn-primary:hover { filter: brightness(1.08); text-decoration: none; color: #fff; transform: translateY(-1px); transition: transform .12s ease; }
 .btn:disabled { opacity: .5; cursor: not-allowed; }
 
 .chip {

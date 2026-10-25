@@ -5,7 +5,7 @@ import { ResultsService } from '../../core/results.service';
 import { ChartPanelComponent } from '../../shared/chart-panel.component';
 import { MetricNameComponent } from '../../shared/metric-name.component';
 import { DatasetAudit, ProjectRow } from '../../core/models';
-import { palette, axisBase, baseGrid } from '../../core/theme';
+import { palette, axisBase, baseGrid, barColors } from '../../core/theme';
 
 @Component({
   selector: 'app-dataset',
@@ -100,7 +100,8 @@ export class DatasetComponent implements OnInit {
       tooltip: { trigger: 'axis' },
       xAxis: { type: 'category', data: rows.map(r => r.name), ...axisBase(), axisLabel: { color: p.muted, fontSize: 10, interval: 0, rotate: 20 } },
       yAxis: { type: 'value', name: 'rate', ...axisBase(), axisLabel: { formatter: (v: number) => (v * 100).toFixed(1) + '%', color: p.muted } },
-      series: [{ type: 'bar', data: rows.map(r => r.rate), itemStyle: { color: p.crit }, barWidth: '55%' }],
+      series: [{ type: 'bar', barWidth: '55%',
+        data: rows.map((r, i) => ({ value: r.rate, itemStyle: { color: barColors(rows.length)[i], borderRadius: [6, 6, 0, 0] } })) }],
     };
   }
 
@@ -117,8 +118,9 @@ export class DatasetComponent implements OnInit {
       xAxis: { type: 'category', data: s, ...axisBase(), axisLabel: { color: p.muted, fontSize: 10, rotate: 25 } },
       yAxis: { type: 'category', data: s, ...axisBase(), axisLabel: { color: p.muted, fontSize: 10 } },
       visualMap: { min: 0, max, calculable: true, orient: 'horizontal', left: 'center', bottom: 0,
-        inRange: { color: [p.surface, p.accent] }, textStyle: { color: p.muted } },
-      series: [{ type: 'heatmap', data, label: { show: true, color: p.ink, fontSize: 10 } }],
+        inRange: { color: ['#EEF2FF', '#818CF8', '#4338CA'] }, textStyle: { color: p.muted } },
+      series: [{ type: 'heatmap', data, itemStyle: { borderColor: p.surface, borderWidth: 2 },
+        label: { show: true, color: p.ink, fontSize: 10 } }],
     };
   }
 }

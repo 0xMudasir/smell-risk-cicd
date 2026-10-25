@@ -4,7 +4,7 @@ import type { EChartsOption } from 'echarts';
 import { ResultsService } from '../../core/results.service';
 import { ChartPanelComponent } from '../../shared/chart-panel.component';
 import { Rq1, Rq1Corr } from '../../core/models';
-import { palette, axisBase } from '../../core/theme';
+import { palette, axisBase, barColors } from '../../core/theme';
 
 const METHODS = [
   ['linear_regression_coef', 'LinReg |coef|'],
@@ -111,9 +111,10 @@ export class FeaturesComponent implements OnInit {
       xAxis: { type: 'category', data: this.methodLabels, ...axisBase(), axisLabel: { color: p.muted, rotate: 20, fontSize: 10 } },
       yAxis: { type: 'category', data: feats, ...axisBase(), axisLabel: { color: p.muted, fontSize: 10 } },
       visualMap: { min: 1, max: 10, calculable: true, orient: 'horizontal', left: 'center', bottom: 0,
-        inRange: { color: [p.accent, p.surface] }, textStyle: { color: p.muted } },
+        inRange: { color: ['#4338CA', '#7C3AED', '#DB2777', '#F9A8D4'] }, textStyle: { color: p.muted } },
       series: [{ type: 'heatmap', data: data.filter(d => d[2] !== null) as any,
-        label: { show: true, color: p.ink, fontSize: 10 } }],
+        itemStyle: { borderColor: p.surface, borderWidth: 2 },
+        label: { show: true, color: '#fff', fontSize: 10, fontWeight: 'bold' } }],
     };
   }
 
@@ -125,7 +126,8 @@ export class FeaturesComponent implements OnInit {
       tooltip: { trigger: 'axis' },
       xAxis: { type: 'value', ...axisBase() },
       yAxis: { type: 'category', data: r.map(x => x.feature), ...axisBase(), axisLabel: { color: p.muted, fontSize: 10 } },
-      series: [{ type: 'bar', data: r.map(x => x.mean), itemStyle: { color: p.accent } }],
+      series: [{ type: 'bar',
+        data: r.map((x, i) => ({ value: x.mean, itemStyle: { color: barColors(r.length)[i], borderRadius: [0, 4, 4, 0] } })) }],
     };
   }
 
@@ -140,7 +142,7 @@ export class FeaturesComponent implements OnInit {
       xAxis: { type: 'category', data: c.features, ...axisBase(), axisLabel: { color: p.muted, rotate: 70, fontSize: 9 } },
       yAxis: { type: 'category', data: c.features, ...axisBase(), axisLabel: { color: p.muted, fontSize: 9 } },
       visualMap: { min: 0, max: 1, calculable: true, orient: 'horizontal', left: 'center', bottom: 0,
-        inRange: { color: [p.surface, p.warn, p.crit] }, textStyle: { color: p.muted } },
+        inRange: { color: ['#EEF2FF', '#38BDF8', '#6D28D9', '#DB2777'] }, textStyle: { color: p.muted } },
       series: [{ type: 'heatmap', data }],
     };
   }

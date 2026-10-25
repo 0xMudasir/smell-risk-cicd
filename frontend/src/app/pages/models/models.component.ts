@@ -6,7 +6,7 @@ import type { EChartsOption } from 'echarts';
 import { ResultsService } from '../../core/results.service';
 import { ChartPanelComponent } from '../../shared/chart-panel.component';
 import { Rq3Results, Rq3Nemenyi, Rq3Roc, Rq3Confusion, Rq3Improvements } from '../../core/models';
-import { palette, axisBase, baseGrid } from '../../core/theme';
+import { palette, axisBase, baseGrid, categorical, barColors } from '../../core/theme';
 
 @Component({
   selector: 'app-models',
@@ -139,7 +139,7 @@ export class ModelsComponent implements OnInit {
   rocChart(): EChartsOption {
     const p = palette();
     const r = this.roc()!;
-    const colors = [p.crit, p.accent, p.warn];
+    const colors = categorical();
     return {
       grid: baseGrid(),
       tooltip: { trigger: 'axis' },
@@ -150,7 +150,7 @@ export class ModelsComponent implements OnInit {
         ...r.top3.map((m, i) => ({
           name: m, type: 'line' as const, showSymbol: false, smooth: true,
           data: r.curves[m].fpr.map((f, k) => [f, r.curves[m].tpr[k]]),
-          lineStyle: { color: colors[i % 3] }, itemStyle: { color: colors[i % 3] },
+          lineStyle: { color: colors[i % colors.length], width: 3 }, itemStyle: { color: colors[i % colors.length] },
         })),
         { name: 'chance', type: 'line' as const, showSymbol: false, data: [[0, 0], [1, 1]],
           lineStyle: { color: p.rule, type: 'dashed' } },
@@ -166,7 +166,8 @@ export class ModelsComponent implements OnInit {
       tooltip: { trigger: 'axis' },
       xAxis: { type: 'value', name: 'mean rank', ...axisBase() },
       yAxis: { type: 'category', data: rows.map(r => r.m), ...axisBase(), axisLabel: { color: p.muted, fontSize: 10 } },
-      series: [{ type: 'bar', data: rows.map(r => r.rank), itemStyle: { color: p.accent } }],
+      series: [{ type: 'bar',
+        data: rows.map((r, i) => ({ value: r.rank, itemStyle: { color: barColors(rows.length)[i], borderRadius: [0, 4, 4, 0] } })) }],
     };
   }
 }

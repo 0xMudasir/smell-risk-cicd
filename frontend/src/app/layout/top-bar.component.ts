@@ -22,16 +22,19 @@ import { buildInfo } from '../../environments/build-info';
     </header>
   `,
   styles: [`
-    .top { display: flex; align-items: center; gap: 16px; padding: 10px 20px;
-           border-bottom: 1px solid var(--rule); background: var(--surface); }
-    .title { font-weight: 600; font-size: 16px; }
-    .meta { margin-left: auto; display: flex; align-items: center; gap: 14px; font-size: 13px; color: var(--ink-muted); flex-wrap: wrap; }
-    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 2px 8px;
-            border: 1px solid var(--rule); border-radius: var(--radius-sm); }
-    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--ink-muted); }
-    .pill.on { color: var(--ok); border-color: var(--ok); } .pill.on .dot { background: var(--ok); }
-    .pill.off { color: var(--crit); border-color: var(--crit); } .pill.off .dot { background: var(--crit); }
-    .build { font-family: var(--font-mono); font-size: 12px; }
+    .top { display: flex; align-items: center; gap: 16px; padding: 12px 20px;
+           background: var(--grad-brand); color: #fff; box-shadow: var(--shadow-md); }
+    .title { font-weight: 700; font-size: 17px; letter-spacing: .2px; color: #fff; }
+    .meta { margin-left: auto; display: flex; align-items: center; gap: 12px; font-size: 13px;
+            color: rgba(255,255,255,0.88); flex-wrap: wrap; }
+    .pill { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px;
+            border: 1px solid rgba(255,255,255,0.35); border-radius: 999px;
+            background: rgba(255,255,255,0.12); color: #fff; }
+    .pill .dot { width: 8px; height: 8px; border-radius: 50%; background: #fff; }
+    .pill.on { background: rgba(255,255,255,0.18); } .pill.on .dot { background: #4ADE80; box-shadow: 0 0 8px #4ADE80; }
+    .pill.off .dot { background: #FB7185; box-shadow: 0 0 8px #FB7185; }
+    .build { font-family: var(--font-mono); font-size: 12px; background: rgba(255,255,255,0.12);
+             padding: 3px 8px; border-radius: 999px; }
     @media (max-width: 700px) { .model { display: none; } }
   `],
 })

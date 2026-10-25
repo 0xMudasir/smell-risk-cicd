@@ -21,9 +21,9 @@ import { LucideAngularModule, LayoutGrid, Database, ListTree, Ruler, BarChart3, 
             border-right: 1px solid var(--rule); background: var(--surface); min-height: 100%; }
     .link { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: var(--radius-sm);
             color: var(--ink); font-size: 14px; }
-    .link:hover { background: var(--paper); text-decoration: none; }
-    .link.active { background: var(--paper); color: var(--accent); font-weight: 600;
-                   box-shadow: inset 2px 0 0 var(--accent); }
+    .link:hover { background: var(--grad-soft); color: var(--accent); text-decoration: none; }
+    .link.active { background: var(--grad-soft); color: var(--accent); font-weight: 600;
+                   box-shadow: inset 3px 0 0 var(--accent); }
     .ico { color: currentColor; }
     @media (max-width: 900px) {
       .rail { flex-direction: row; width: 100%; overflow-x: auto; border-right: none;

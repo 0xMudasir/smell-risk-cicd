@@ -76,9 +76,14 @@ import { DatasetAudit, ModelCard, Rq1, Rq3Results, Rq3Improvements } from '../..
   styles: [`
     .intro { max-width: 70ch; }
     .cards { margin: 16px 0; }
-    .card { flex: 1; min-width: 220px; }
-    .card .k { font-size: 12px; color: var(--ink-muted); text-transform: none; }
-    .card .v { font-size: 24px; font-weight: 600; margin: 4px 0; }
+    .card { flex: 1; min-width: 220px; position: relative; overflow: hidden;
+            background: var(--grad-soft); border-top: 3px solid var(--c1); }
+    .card:nth-child(2) { border-top-color: var(--c3); }
+    .card:nth-child(3) { border-top-color: var(--c4); }
+    .card .k { font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: .5px; font-weight: 600; }
+    .card .v { font-size: 26px; font-weight: 700; margin: 6px 0; color: var(--accent); }
+    .card:nth-child(2) .v { color: var(--c3); }
+    .card:nth-child(3) .v { color: var(--c4); }
     .card .s { font-size: 12px; }
     .mono { font-family: var(--font-mono); font-size: 11px; }
   `],
