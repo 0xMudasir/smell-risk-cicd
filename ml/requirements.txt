@@ -1,0 +1,30 @@
+# ML pipeline dependencies (Phase 0 starter manifest).
+#
+# RULE 6 (CLAUDE.md): the four load-critical libraries below MUST stay pinned to
+# the SAME versions here and in backend/requirements.txt, or the saved model will
+# not load in the API. Exact == pins are added in Phase 2 against a verified
+# install (local Python 3.13 and CI Python 3.11 both must resolve them).
+#
+# --- load-critical (keep identical in backend/requirements.txt) ---
+scikit-learn
+xgboost
+imbalanced-learn
+numpy
+#
+# --- data / io ---
+pandas
+pyarrow
+pyyaml
+scipy
+#
+# --- feature importance / stats ---
+Boruta            # BorutaPy
+scikit-posthocs   # Nemenyi post-hoc
+shap
+#
+# --- figures ---
+matplotlib
+seaborn
+#
+# --- model persistence ---
+joblib

@@ -1,0 +1,5 @@
+# CD to GitHub Pages - implemented in Phase 9 (CLAUDE.md Section 8.2).
+# Placeholder: kept as a comment until Phase 9. The real workflow triggers on a
+# successful "CI" workflow_run on main, generates build-info.ts (SHA, run number,
+# UTC time), builds the Angular app with --base-href /<repo>/, and deploys the
+# browser output via actions/upload-pages-artifact + actions/deploy-pages.

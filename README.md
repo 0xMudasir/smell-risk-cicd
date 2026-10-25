@@ -1,0 +1,52 @@
+# Smell Risk Dashboard
+
+Replicating the **method** of Diouf et al. (2026), *Predicting Software Security
+Bugs Using Machine Learning and Quality Metrics* (CMC 87(3), DOI
+10.32604/cmc.2026.077139), on a multi-label **code-smell** dataset, and carrying
+it through a full lab workflow: VS Code -> GitHub -> GitHub Actions CI -> CD to
+GitHub Pages -> an Angular frontend talking to a Flask ML API.
+
+> Different target. The paper predicts security bugs; we predict code smells. We
+> replicate the methodology and compare **patterns** (do the same metric families
+> matter? does a "3x rule" appear? do tree ensembles win?), not exact numbers.
+
+Owner: Mudasir Ali (BSSE-F23-A, Air University).
+
+## Status
+
+Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 0 (scaffold) done.**
+
+| Phase | Goal | State |
+|---|---|---|
+| P0 | Scaffold + git | done |
+| P1 | Dataset audit | next |
+| P2 | Preprocess + CV | |
+| P3-P5 | RQ1 / RQ2 / RQ3 + final model | |
+| P6 | Paper review + export | |
+| P7 | Flask API | |
+| P8 | Angular UI | |
+| P9 | CI/CD + Pages | |
+| P10 | Docs + demo | |
+
+## Layout
+
+```
+ml/        reproducible ML pipeline (src scripts, config, artifacts, reports)
+backend/   Flask prediction API
+frontend/  Angular dashboard (set up in Phase 8)
+docs/      DECISIONS.md, PAPER_REVIEW.md, REPORT.md
+data/      raw dataset (gitignored) + data/README.md
+.github/   CI and CD workflows (set up in Phase 9)
+```
+
+## Setup (will be expanded in Phase 10)
+
+```bash
+# Python ML + API
+python -m venv .venv
+.venv\Scripts\activate          # Windows
+pip install -r ml/requirements.txt
+```
+
+Place the dataset at `data/raw/multi-smell-dataset-v1_2.csv` (see `data/README.md`).
+Full setup, run, and 5-minute demo instructions land in Phase 10.

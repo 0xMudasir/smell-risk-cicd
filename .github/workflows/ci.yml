@@ -1,0 +1,6 @@
+# CI - implemented in Phase 9 (CLAUDE.md Section 8.1).
+# Placeholder: kept as a comment so GitHub Actions does not try to run an empty
+# workflow before the pipeline exists. Phase 9 adds the real jobs:
+#   backend     - pip install, python -m compileall backend ml/src, pytest
+#   model-smoke - load model.joblib + schema, predict one row, assert prob in [0,1]
+#   frontend    - npm ci, npm run build -- --configuration production

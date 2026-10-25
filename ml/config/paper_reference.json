@@ -1,0 +1,60 @@
+{
+  "_comment": "Values transcribed from Diouf et al. (2026), CMC 87(3), DOI 10.32604/cmc.2026.077139. These are the PAPER's numbers (security-bug target on their dataset). They are ALWAYS labelled 'Paper' in UI/reports and are NEVER our results. Do not edit except to fix a transcription error against the PDF.",
+  "paper": {
+    "title": "Predicting Software Security Bugs Using Machine Learning and Quality Metrics: An Empirical Study",
+    "authors": "Diouf, Toe, Grichi, Nakouri, Jaafar",
+    "venue": "Computers, Materials & Continua 87(3), 2026",
+    "doi": "10.32604/cmc.2026.077139",
+    "companion_repo": "https://github.com/MdioufDataScientist/PredictSecBugs"
+  },
+  "dataset": {
+    "n_files": 338442,
+    "n_buggy": 33294,
+    "n_non_buggy_table11": 305148,
+    "n_non_buggy_implied": 305149,
+    "buggy_rate": 0.0984,
+    "note": "Table 11 reports non-buggy as 305,148 but 338,442-33,294=305,148; some tables imply 305,149. Documented as a reporting slip in PAPER_REVIEW.md item 9."
+  },
+  "rq3_table15": {
+    "_columns": ["accuracy", "precision", "recall", "f1", "mcc", "auc"],
+    "_note": "Mean over 5 time-series folds. F1 values for the SVMs are internally inconsistent with their P/R (see PAPER_REVIEW item 1); kept verbatim as the paper reported them.",
+    "XGBoost":             {"accuracy": 0.98, "precision": 0.95, "recall": 0.82, "f1": 0.88, "mcc": 0.87, "auc": 0.91},
+    "Random Forest":       {"accuracy": 0.97, "precision": 0.89, "recall": 0.82, "f1": 0.85, "mcc": 0.84, "auc": 0.90},
+    "AdaBoost":            {"accuracy": 0.97, "precision": 0.90, "recall": 0.79, "f1": 0.84, "mcc": 0.83, "auc": 0.89},
+    "MLP":                 {"accuracy": 0.97, "precision": 0.90, "recall": 0.77, "f1": 0.83, "mcc": 0.82, "auc": 0.88},
+    "Decision Tree":       {"accuracy": 0.96, "precision": 0.78, "recall": 0.83, "f1": 0.80, "mcc": 0.78, "auc": 0.90},
+    "KNN":                 {"accuracy": 0.94, "precision": 0.77, "recall": 0.48, "f1": 0.59, "mcc": 0.58, "auc": 0.73},
+    "Logistic Regression": {"accuracy": 0.90, "precision": 0.31, "recall": 0.03, "f1": 0.05, "mcc": 0.06, "auc": 0.51},
+    "Linear SVM":          {"accuracy": 0.86, "precision": 0.35, "recall": 0.30, "f1": 0.52, "mcc": 0.25, "auc": 0.71},
+    "RBF SVM":             {"accuracy": 0.87, "precision": 0.29, "recall": 0.36, "f1": 0.47, "mcc": 0.22, "auc": 0.69},
+    "Naive Bayes":         {"accuracy": 0.84, "precision": 0.16, "recall": 0.15, "f1": 0.15, "mcc": 0.07, "auc": 0.53},
+    "QDA":                 {"accuracy": 0.62, "precision": 0.15, "recall": 0.61, "f1": 0.24, "mcc": 0.15, "auc": 0.62}
+  },
+  "rq2_thresholds_table14": {
+    "_note": "warning / critical thresholds for the paper's core metrics (security-bug target). Our thresholds are computed from OUR dataset in RQ2 and shown separately.",
+    "CountStmtExe":            {"warning": 50, "critical": 130},
+    "SumCyclomatic":           {"warning": 24, "critical": 57},
+    "SumCyclomaticModified":   {"warning": 23, "critical": 55},
+    "AvgCyclomaticModified":   {"warning": 3,  "critical": 5},
+    "CountDeclClass":          {"warning": 2,  "critical": 3}
+  },
+  "hyperparameters_table4": {
+    "_note": "Used EXACTLY in the replication track (RQ3). Global seed 42 elsewhere; LR keeps the paper's random_state=0.",
+    "KNN": {"n_neighbors": 3},
+    "Decision Tree": {"max_depth": 3},
+    "Random Forest": {"max_depth": 3, "n_estimators": 10, "max_features": 1},
+    "MLP": {"activation": "relu", "solver": "adam", "alpha": 1, "batch_size": "auto"},
+    "AdaBoost": {"n_estimators": 50},
+    "XGBoost": {"_defaults": true},
+    "Gaussian Naive Bayes": {"priors": null, "var_smoothing": 1e-9},
+    "QDA": {"priors": null, "reg_param": 0.0, "store_covariance": false, "tol": 1e-4},
+    "SVM linear": {"kernel": "linear"},
+    "SVM RBF": {"kernel": "rbf"},
+    "Logistic Regression": {"random_state": 0, "solver": "lbfgs", "max_iter": 100}
+  },
+  "rq1_core_metrics": {
+    "_note": "The paper's 6 consensus 'core' metrics (intersection of top-10 importance lists). Used as the comparison target for OUR RQ1 consensus.",
+    "metrics": ["CountStmtExe", "SumCyclomatic", "SumCyclomaticModified", "AvgCyclomaticModified", "CountDeclClass", "CountLineCode"],
+    "caveat": "Exact 6-metric list should be verified against the PDF in Phase 3 before comparison; CountLineCode is provisional."
+  }
+}

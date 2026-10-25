@@ -1,0 +1,31 @@
+# Pipeline configuration. Finalised in Phase 2 (paths, target, CV strategy, seeds).
+# Values below are placeholders filled in after the Phase 1 audit.
+
+seed: 42
+
+paths:
+  raw: data/raw/multi-smell-dataset-v1_2.csv
+  clean_parquet: data/processed/clean.parquet   # generated, gitignored
+  artifacts: ml/artifacts
+  reports: ml/reports
+
+target:
+  # Primary target mirrors the paper: has_smell = 1 if any smell label positive.
+  name: has_smell
+  definition: any_smell_positive        # set precisely in Phase 1/2
+  smell_label_columns: []               # filled in Phase 1 audit
+
+columns:
+  identifiers: []                       # never used as features (names, paths, project)
+  categorical: []                       # one-hot; SMOTENC if SMOTE must see them
+  numeric_metrics: []                   # the Understand-style metrics
+  date_column: null                     # decides TimeSeriesSplit vs grouped CV
+  project_column: null                  # needed for StratifiedGroupKFold
+
+cv:
+  strategy: TBD                         # time_series | grouped | stratified (Section 4.2)
+  n_splits: 5
+
+scaling:
+  # Scale-sensitive models only (trees get raw values).
+  scale_sensitive_models: [logistic_regression, svm_linear, svm_rbf, knn, mlp, qda]
