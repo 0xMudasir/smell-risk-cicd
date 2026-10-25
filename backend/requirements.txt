@@ -15,13 +15,16 @@ imbalanced-learn==0.14.2
 pandas==3.1.0
 joblib==1.6.0
 #
-# --- web (pinned in Phase 7) ---
-Flask
-flask-cors
-gunicorn           # optional hosting only
+# --- web ---
+Flask==3.1.3
+flask-cors==6.0.5
+Werkzeug==3.1.9
+gunicorn           # optional hosting only (pin when a host is chosen in CD)
 #
-# --- optional: /api/analyze-code (decided after Phase 1) ---
-# lizard
+# --- optional: /api/analyze-code ---
+# Skipped by design (Phase 7): the model needs Halstead distinct/total
+# operator & operand counts, which lizard does not produce, so pasted-code
+# metric extraction could not be faithful. See docs/DECISIONS.md D7.1.
 #
-# --- tests (pinned in Phase 7) ---
-pytest
+# --- tests ---
+pytest==9.1.1

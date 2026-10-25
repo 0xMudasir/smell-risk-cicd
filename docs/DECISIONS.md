@@ -183,3 +183,24 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Decision:** Write all 9 review items with each claim tied to a file in `ml/artifacts/`, and verify the quantitative ones by computation (item 1 SVM F1s: 0.323/0.321 not 0.52/0.47; item 9 count 338,442-33,294=305,148).
 - **Reason:** Rule 2 + Section 9 ask for verified, evidenced criticism, not assertions.
 - **Effect:** `docs/PAPER_REVIEW.md` complete with a status table.
+
+---
+
+## Phase 7 - Flask API
+
+### D7.1 Do not implement /api/analyze-code
+- **Decision:** Skip the optional pasted-code endpoint.
+- **Alternatives:** Use `lizard` to extract metrics from pasted source, then predict.
+- **Reason:** The model's 14 features include Halstead distinct/total operator and operand counts. `lizard` (and similar open-source tools) produce cyclomatic complexity, NLOC and token counts, but not the Halstead operator/operand decomposition, so the extracted feature vector could not be built faithfully. A "mark approximated: true" response would be misleading here.
+- **Effect:** Endpoint omitted; documented in `backend/app.py` and `backend/requirements.txt`. Enter-metrics and CSV-upload cover the use case.
+
+### D7.2 Per-prediction explanations via XGBoost SHAP contributions
+- **Decision:** `top_contributors` uses the XGBoost booster's exact `pred_contribs` (per-row SHAP), with a feature-importance / coef proxy fallback for other model types.
+- **Alternatives:** Ship the `shap` package in the backend (heavy); global feature importances only.
+- **Reason:** `pred_contribs` gives exact per-row attributions with no extra dependency (xgboost is already pinned). Falls back gracefully if a non-XGBoost model is ever deployed.
+- **Effect:** Signed per-feature impacts in every prediction response.
+
+### D7.3 Risk tier combines probability and threshold flags
+- **Decision:** Implement Section 6 exactly: critical if probability >= 0.7 OR >= 2 critical flags; low if probability < 0.4 and no critical flag; else elevated. Cutoffs read from `thresholds.json`, not hard-coded.
+- **Reason:** The two signals catch different failure modes - a confident model score and an extreme-metric outlier the model may under-weight (seen in the live smoke test: an out-of-range row scored prob 0.18 but was flagged critical by 8 metrics).
+- **Effect:** `risk_tier` logic lives in `predictor.py`; tunable via `thresholds.json`.
