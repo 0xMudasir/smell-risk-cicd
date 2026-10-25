@@ -41,11 +41,7 @@ same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend
 | P7 | Flask API | done |
 | P8 | Angular UI | done |
 | P9 | CI/CD + Pages | done (live) |
-| P10 | Docs + demo | next |
-| P7 | Flask API | |
-| P8 | Angular UI | |
-| P9 | CI/CD + Pages | |
-| P10 | Docs + demo | |
+| P10 | Docs + demo | done |
 
 ## Layout
 
@@ -58,17 +54,70 @@ data/      raw dataset (gitignored) + data/README.md
 .github/   CI and CD workflows (set up in Phase 9)
 ```
 
-## Setup (will be expanded in Phase 10)
+## Setup
 
-```bash
-# Python ML + API
+Prerequisites: **Python 3.12+** (dev used 3.13; the stack needs ≥3.12) and
+**Node 20+**.
+
+```powershell
+# 1. Python env for the ML pipeline + API
 python -m venv .venv
-.venv\Scripts\activate          # Windows
-pip install -r ml/requirements.txt
+.venv\Scripts\Activate.ps1          # Windows PowerShell
+pip install -r ml/requirements.txt  # pipeline deps
+pip install -r backend/requirements.txt  # API deps
+
+# 2. Place the dataset (gitignored, ~618 MB) — see data/README.md
+#    data/raw/multi-smell-dataset-v1_2.csv
+
+# 3. Frontend deps
+cd frontend && npm ci && cd ..
 ```
 
-Place the dataset at `data/raw/multi-smell-dataset-v1_2.csv` (see `data/README.md`).
-Full setup, run, and 5-minute demo instructions land in Phase 10.
+## Reproduce the pipeline (seed 42)
+
+Run the phases in order; each writes to `ml/artifacts/` and `ml/reports/`:
+
+```powershell
+python -m ml.src.audit            # dataset audit
+python -m ml.src.preprocess       # clean parquet
+python -m ml.src.rq1_importance   # RQ1
+python -m ml.src.rq2_statistics   # RQ2
+python -m ml.src.rq3_models       # RQ3 (heaviest; several minutes)
+python -m ml.src.train_final      # save backend/model/*
+python -m ml.src.export_artifacts # copy JSON to frontend + verify model
+```
+
+## Run locally
+
+```powershell
+# API (terminal 1)
+python backend/app.py             # http://localhost:5000
+python -m pytest backend/tests -q # 10 tests
+
+# Frontend (terminal 2)
+cd frontend && npm start          # http://localhost:4200
+```
+
+The research pages work with no API; the Predict page calls the local API.
+
+## 5-minute demo script
+
+1. **Live site** — open https://0xmudasir.github.io/smell-risk-cicd/. Point out the
+   top-bar **build tag** (commit SHA + run number) — that is CD's fingerprint.
+2. **Overview** — 107,554 rows, 9.2% smelly; Paper vs ours table (XGBoost 0.835 AUC
+   vs paper 0.91) — "same pattern, different target".
+3. **Features** — `Logical Lines` is rank 1 across all methods; size + cyclomatic
+   dominate, as in the paper.
+4. **Thresholds** — the signature ruler; note the "3× rule" (smelly medians 3.6–11×)
+   and that single-metric thresholds score only ~0.3 F1 (the paper never checked).
+5. **Models** — XGBoost tops the leaderboard and the Nemenyi ranks; tree ensembles win.
+6. **Predict** — start `python backend/app.py`; the API pill flips to online. Load
+   the smelly example, Run prediction → high risk with threshold rulers lit.
+7. **CD proof** — bump a visible label, commit, push; CI runs, CD deploys, the live
+   build tag changes.
+
+See `docs/REPORT.md` for the full write-up and `docs/PAPER_REVIEW.md` for the
+nine paper issues we fixed.
 
 ## CI/CD and GitHub Pages (Phase 9)
 
