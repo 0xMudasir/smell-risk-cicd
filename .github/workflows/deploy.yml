@@ -58,6 +58,8 @@ jobs:
         run: npm run build -- --configuration production --base-href "/${{ github.event.repository.name }}/"
 
       - uses: actions/configure-pages@v5
+        with:
+          enablement: true   # turn Pages on (Actions source) using the workflow token; no manual Settings step
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
