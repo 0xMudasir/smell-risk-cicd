@@ -224,3 +224,24 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Decision:** `withHashLocation()`; map `src/assets` -> `assets` in angular.json; `html, body { overflow-x: hidden }` plus per-table `.scroll-x` wrappers.
 - **Reason:** Hash routing avoids 404s on deep-link refresh on Pages (7.2). The overflow guard + table wrappers meet the "no horizontal page scroll at 360px" floor (7.8) while the nav tab bar and wide tables keep their own internal scroll (verified: pageScrollX = 0 on every page at 360px).
 - **Effect:** Output at `dist/smell-risk-dashboard/browser` (for CD). Initial bundle 332 kB raw / 96 kB transfer; echarts lazy-loaded.
+
+---
+
+## Phase 9 - CI/CD
+
+### D9.1 Repo-name-free deploy (base-href from the event)
+- **Decision:** `deploy.yml` builds with `--base-href "/${{ github.event.repository.name }}/"` instead of a hardcoded repo name.
+- **Alternatives:** Hardcode `/smell-risk-cicd/`.
+- **Reason:** The workflow then works for any repository name the owner picks, with no edit. The Pages URL is `https://<owner>.github.io/<repo>/`, which the backend CORS already allows (`*.github.io`).
+- **Effect:** No repo name needs to be committed anywhere.
+
+### D9.2 CI Python 3.11 with a model-smoke cross-version guard
+- **Decision:** CI runs Python 3.11 (lab spec) though the model was trained on 3.13; the `model-smoke` job loads `model.joblib` and predicts a row to prove it deserializes under 3.11.
+- **Alternatives:** Set CI to 3.13 to match local exactly.
+- **Reason:** Follow the lab's stated CI version. All pinned libraries publish cp311 wheels and the pickle is protocol 5 (readable on 3.11), so the load should succeed; the smoke job is the explicit check. If it ever fails, bump CI to 3.13 (one line).
+- **Effect:** A red model-smoke job would be the early warning D0.4/D2.2 anticipated.
+
+### D9.3 CD gated on CI success via workflow_run
+- **Decision:** `deploy.yml` triggers on `workflow_run` of "CI" completed on main, runs only if `conclusion == 'success'`, checks out `head_sha`, and generates `build-info.ts` (short SHA, run number, UTC time) before building.
+- **Reason:** Matches CLAUDE.md 8.2/8.3; the build tag on the live top bar changes after each push, which is how the demo proves CD worked.
+- **Effect:** Pages deploys only from green builds; manual steps (create repo, enable Pages = GitHub Actions) are the owner's, documented in the README.

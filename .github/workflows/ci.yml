@@ -1,6 +1,64 @@
-# CI - implemented in Phase 9 (CLAUDE.md Section 8.1).
-# Placeholder: kept as a comment so GitHub Actions does not try to run an empty
-# workflow before the pipeline exists. Phase 9 adds the real jobs:
-#   backend     - pip install, python -m compileall backend ml/src, pytest
-#   model-smoke - load model.joblib + schema, predict one row, assert prob in [0,1]
-#   frontend    - npm ci, npm run build -- --configuration production
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'   # lab CI version (local dev is 3.13; model-smoke confirms cross-version load)
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend deps
+        run: pip install -r backend/requirements.txt
+      - name: Syntax check (compileall)
+        run: python -m compileall backend ml/src
+      - name: Run tests
+        run: python -m pytest backend/tests -q
+
+  model-smoke:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+      - name: Install backend deps
+        run: pip install -r backend/requirements.txt
+      - name: Load model and predict one row
+        run: |
+          python - <<'PY'
+          import json, joblib, pandas as pd
+          model = joblib.load('backend/model/model.joblib')
+          schema = json.load(open('backend/model/feature_schema.json'))
+          row = pd.DataFrame([{f['name']: f['median'] for f in schema['features']}])[schema['order']]
+          prob = float(model.predict_proba(row)[0, 1])
+          assert 0.0 <= prob <= 1.0, f'probability out of range: {prob}'
+          print(f'model-smoke OK: median-row probability {prob:.4f}')
+          PY
+
+  frontend:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - name: Install deps
+        run: npm ci
+      - name: Production build
+        run: npm run build -- --configuration production

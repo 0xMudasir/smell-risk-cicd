@@ -36,7 +36,8 @@ same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend
 | P6 | Paper review + export | done |
 | P7 | Flask API | done |
 | P8 | Angular UI | done |
-| P9 | CI/CD + Pages | next |
+| P9 | CI/CD + Pages | config done; push to go live |
+| P10 | Docs + demo | next |
 | P7 | Flask API | |
 | P8 | Angular UI | |
 | P9 | CI/CD + Pages | |
@@ -64,3 +65,28 @@ pip install -r ml/requirements.txt
 
 Place the dataset at `data/raw/multi-smell-dataset-v1_2.csv` (see `data/README.md`).
 Full setup, run, and 5-minute demo instructions land in Phase 10.
+
+## CI/CD and GitHub Pages (Phase 9)
+
+Workflows are in `.github/workflows/`:
+
+- **ci.yml** (push / PR to `main`): backend `compileall` + `pytest`, a model-smoke
+  job that loads `model.joblib` and predicts a row, and an Angular production build.
+- **deploy.yml**: on a successful CI run on `main`, generates `build-info.ts`,
+  builds with `--base-href "/<repo>/"` (read from the event, so no edit needed),
+  and deploys `dist/smell-risk-dashboard/browser` to GitHub Pages.
+
+To make the site live (one-time, needs your GitHub account):
+
+```bash
+# 1. create a repo (e.g. smell-risk-cicd) and add it as the remote
+git remote add origin https://github.com/<you>/smell-risk-cicd.git
+git push -u origin main
+
+# 2. GitHub → Settings → Pages → Source: "GitHub Actions"
+```
+
+CI runs on push; on green, CD deploys and the top-bar build tag shows the new SHA
+and run number on the live site (this is how the demo proves CD worked). The live
+Predict page calls a local Flask API (`python backend/app.py`); elsewhere it shows
+the offline state.
