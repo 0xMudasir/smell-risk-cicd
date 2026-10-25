@@ -1,0 +1,132 @@
+{
+  "features": [
+    {
+      "name": "Logical Lines",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 9.0,
+      "max": 69292.0,
+      "description": "Logical lines of code in the entity (size)."
+    },
+    {
+      "name": "Distinct Operators",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 3.0,
+      "max": 16.0,
+      "description": "Halstead n1: number of distinct operators."
+    },
+    {
+      "name": "Distinct Operands",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 20.0,
+      "max": 5112.0,
+      "description": "Halstead n2: number of distinct operands."
+    },
+    {
+      "name": "Total Operators",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 7.0,
+      "max": 65320.0,
+      "description": "Halstead N1: total operator occurrences."
+    },
+    {
+      "name": "Total Operands",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 43.0,
+      "max": 383408.0,
+      "description": "Halstead N2: total operand occurrences."
+    },
+    {
+      "name": "Vocabulary",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 23.0,
+      "max": 5123.0,
+      "description": "Halstead vocabulary n = n1 + n2."
+    },
+    {
+      "name": "Length",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 52.0,
+      "max": 448728.0,
+      "description": "Halstead length N = N1 + N2."
+    },
+    {
+      "name": "Calculated Length",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 91.19344939991072,
+      "max": 63016.21763008605,
+      "description": "Halstead estimated length n1*log2 n1 + n2*log2 n2."
+    },
+    {
+      "name": "Volume",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 232.19280948873623,
+      "max": 5233964.631784534,
+      "description": "Halstead volume = Length * log2(Vocabulary)."
+    },
+    {
+      "name": "Difficulty",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 2.727272727272727,
+      "max": 533.3525223759154,
+      "description": "Halstead difficulty = (n1/2) * (N2/n2)."
+    },
+    {
+      "name": "Effort",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 587.1202031687609,
+      "max": 2790589493.8024106,
+      "description": "Halstead effort = Difficulty * Volume."
+    },
+    {
+      "name": "Time Required",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 32.61778906493116,
+      "max": 155032749.65568948,
+      "description": "Halstead time = Effort / 18 (seconds)."
+    },
+    {
+      "name": "Bugs",
+      "dtype": "number",
+      "min": 0.0,
+      "median": 0.077397603162912,
+      "max": 1744.6548772615113,
+      "description": "Halstead delivered-bugs estimate = Volume / 3000."
+    },
+    {
+      "name": "Cyclomatic Complexity",
+      "dtype": "number",
+      "min": 1.0,
+      "median": 2.0,
+      "max": 49344.0,
+      "description": "McCabe cyclomatic complexity of the entity."
+    }
+  ],
+  "order": [
+    "Logical Lines",
+    "Distinct Operators",
+    "Distinct Operands",
+    "Total Operators",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Difficulty",
+    "Effort",
+    "Time Required",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ]
+}

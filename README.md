@@ -22,6 +22,8 @@ Dataset identified as **SmellyCode++** (107,554 rows, 89 Java projects, 4 smells
 RQ1: size + cyclomatic families dominate, mirroring the paper (`ml/reports/rq1_summary.md`).
 RQ2: large effect sizes, smelly medians 3.6-11x clean; single-metric thresholds
 are weak classifiers (F1 ~0.3) (`ml/reports/rq2_summary.md`).
+RQ3: XGBoost wins (ROC-AUC 0.835, Nemenyi rank 1.0), tree ensembles dominate -
+same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend/model/`.
 
 | Phase | Goal | State |
 |---|---|---|
@@ -30,8 +32,8 @@ are weak classifiers (F1 ~0.3) (`ml/reports/rq2_summary.md`).
 | P2 | Preprocess + CV | done |
 | P3 | RQ1 feature importance | done |
 | P4 | RQ2 statistics + thresholds | done |
-| P5 | RQ3 models + final model | next |
-| P6 | Paper review + export | |
+| P5 | RQ3 models + final model | done |
+| P6 | Paper review + export | next |
 | P7 | Flask API | |
 | P8 | Angular UI | |
 | P9 | CI/CD + Pages | |

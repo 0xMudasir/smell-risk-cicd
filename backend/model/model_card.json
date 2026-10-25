@@ -1,0 +1,75 @@
+{
+  "model": {
+    "name": "XGBoost",
+    "version": "1.0.0"
+  },
+  "trained_at": "2026-10-25T10:26:26.794646+00:00",
+  "target": {
+    "name": "has_smell",
+    "definition": "has_smell = 1 if any of ['Long method', 'God class', 'Feature envy', 'Data class'] is positive"
+  },
+  "dataset": {
+    "name": "SmellyCode++ (multi-smell-dataset v1.2)",
+    "rows": 107554,
+    "smelly_rate": 0.09221414359298585,
+    "n_projects": 89
+  },
+  "cv": {
+    "strategy": "StratifiedGroupKFold",
+    "n_splits": 5,
+    "group": "Project"
+  },
+  "cv_metrics_mean": {
+    "accuracy": 0.8173366758952767,
+    "precision": 0.28366101360591284,
+    "recall": 0.6410341213067419,
+    "f1": 0.3930736318458459,
+    "mcc": 0.33933529210778307,
+    "roc_auc": 0.8347501705091134,
+    "pr_auc": 0.42116741307306294
+  },
+  "cv_metrics_std": {
+    "accuracy": 0.014420834757248422,
+    "precision": 0.03071789733681152,
+    "recall": 0.06924270731044624,
+    "f1": 0.04137464427850384,
+    "mcc": 0.0524982003076593,
+    "roc_auc": 0.029335272364276185,
+    "pr_auc": 0.0845467272072118
+  },
+  "paper_reference_same_model": {
+    "accuracy": 0.98,
+    "precision": 0.95,
+    "recall": 0.82,
+    "f1": 0.88,
+    "mcc": 0.87,
+    "auc": 0.91
+  },
+  "features": [
+    "Logical Lines",
+    "Distinct Operators",
+    "Distinct Operands",
+    "Total Operators",
+    "Total Operands",
+    "Vocabulary",
+    "Length",
+    "Calculated Length",
+    "Volume",
+    "Difficulty",
+    "Effort",
+    "Time Required",
+    "Bugs",
+    "Cyclomatic Complexity"
+  ],
+  "n_features": 14,
+  "library_versions": {
+    "numpy": "2.5.4",
+    "scikit-learn": "1.9.1",
+    "xgboost": "3.4.1",
+    "imbalanced-learn": "0.14.2",
+    "pandas": "3.1.0",
+    "scipy": "1.18.1",
+    "joblib": "1.6.0"
+  },
+  "notes": "Replicates Diouf et al. (2026) method on SmellyCode++ (code smells, not security bugs). Risk tiers and metric thresholds live in thresholds.json. SMOTE is applied only during fit; prediction applies scaler (if any) + classifier."
+}

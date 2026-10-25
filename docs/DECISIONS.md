@@ -140,3 +140,31 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** Claim we reproduced "the 3x rule".
 - **Reason:** Rule 2 (never invent numbers). Our ratios are 3.6x-11x, usually larger than the paper's 3x; the amplification *pattern* holds but the magnitude differs (different target).
 - **Effect:** `median_ratio_smelly_over_clean` + `approx_3x_rule` per metric; narrative in `rq2_summary.md`.
+
+---
+
+## Phase 5 - RQ3 classifiers + final model
+
+### D5.1 Cap training rows for SVM / MLP / KNN
+- **Decision:** Subsample each CV train fold (stratified) before SMOTE for the kernel SVMs (12,000), MLP (40,000) and KNN (60,000); all other models use the full train fold.
+- **Alternatives:** Full data for all (the paper's scale).
+- **Reason:** libsvm SVC is ~O(n^2)-O(n^3); on ~86k train (x1.8 after SMOTE) it does not finish in a practical time. The caps keep the whole replication reproducible in minutes. Caps are recorded per model in `rq3_results.json`.
+- **Effect:** SVM/MLP/KNN numbers are on capped folds (noted). Given they are mid-pack, the cap does not change the headline (XGBoost wins).
+
+### D5.2 QDA reg_param escalation (forced deviation from Table 4)
+- **Decision:** Try QDA with Table 4 `reg_param=0.0`; on a singular-covariance `LinAlgError`, escalate to 1e-3 / 1e-2 / 1e-1 and record the value used.
+- **Alternatives:** Drop QDA; set reg_param>0 unconditionally.
+- **Reason:** The Halstead metrics are exactly collinear (e.g. Bugs = Volume/3000), so class covariance is singular and `reg_param=0` raises rather than runs. A minimal regularisation yields a comparable QDA number. This is a concrete instance of PAPER_REVIEW item 4.
+- **Effect:** QDA runs (AUC 0.765); the `deviation` field documents the reg_param used.
+
+### D5.3 Deploy the replication XGBoost; document the stronger variants
+- **Decision:** The deployable model is XGBoost (replication, SMOTE pipeline) refit on all data.
+- **Alternatives:** Deploy the tuned XGBoost (AUC 0.847) or the scale_pos_weight variant.
+- **Reason:** XGBoost is the clear best by ROC-AUC and Nemenyi rank (1.0). The replication model is a single fixed, reproducible configuration; the tuned/scale_pos_weight variants are marginally better (AUC +0.01) but vary per fold or need a separate refit. Deploying the clean model keeps the artifact reproducible; the alternatives are recorded in `rq3_improvements.json` and `rq3_summary.md`.
+- **Effect:** `backend/model/model.joblib` (2.8 MB) + schema/thresholds/card; median-row predict ~6 ms.
+
+### D5.4 Size-ablation as the circularity probe
+- **Decision:** Implement the Section 2.2 ablation as "drop the 5 size-dominant strict-consensus metrics, re-run XGBoost", since the exact SmellyCode++ labeling rule is unconfirmed.
+- **Alternatives:** Drop the specific rule-defining metrics (unknown); skip the ablation.
+- **Reason:** We cannot drop the exact rule metrics without the labeling spec, but size is the dominant predictor, so removing it is the strongest available circularity stress test.
+- **Effect:** AUC 0.835 -> 0.816 (small drop) recorded in `rq3_improvements.json`; supports "circularity plausible but not trivial".
