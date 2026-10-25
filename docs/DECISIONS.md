@@ -64,3 +64,29 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** Drop exact duplicates; dedup on identifier.
 - **Reason:** Exact-duplicate rows are mostly tiny distinct methods (median 2 logical lines) - e.g. many identical one-line getters - so they are genuinely different entities, not errors; there is no method-name column to tell them apart. `StratifiedGroupKFold(groups=Project)` already keeps every entity of a project (hence every method of a class) on one side of each split, so the method/class repetition cannot leak across folds without any dropping.
 - **Effect:** If approved, preprocessing keeps all rows and leans on grouped CV for the leakage guarantee (paper-review item 5). Revisit if grouped CV proves infeasible.
+
+---
+
+## Phase 2 - Preprocessing + CV
+
+### D2.0 Owner sign-off on D1.2 and D1.5
+- **Decision:** Owner approved both Phase-1 proposals ("do same for both"): keep `has_smell` (any smell) as the primary target over the mixed method/class rows, and do **not** deduplicate.
+- **Effect:** `pipeline.yaml` sets `preprocess.deduplicate: false`; the primary task is the single binary `has_smell`, per-smell models are the extension. No further sign-off needed for these.
+
+### D2.1 CV strategy: StratifiedGroupKFold grouped on Project
+- **Decision:** `StratifiedGroupKFold(n_splits=5, shuffle=True, random_state=42)` with `groups=Project` (Section 4.2 option 2).
+- **Alternatives:** TimeSeriesSplit (needs a date column - none exists); plain StratifiedKFold (weakest; leaks because methods/classes of one project would straddle folds).
+- **Reason:** No date/commit column, but 89 projects. Grouping by project keeps every entity of a project (hence every method of a class) on one side of each split, which both gives realistic cross-project generalisation and neutralises the within-class method-repetition leakage - so no row dropping is needed (D1.5). Stratification preserves the 9.22% class ratio per fold.
+- **Effect:** Verified in `cv.py` split sanity: per-fold test rate 9.13-9.46%, projects split ~70/19, **zero** train/test project overlap in all 5 folds. SMOTE/scaling go inside each training fold in RQ3 (Section 4.3), never here.
+
+### D2.2 Pinned library versions (resolves D0.3)
+- **Decision:** Pinned exact versions against a fresh `.venv` (Python 3.13.12): numpy 2.5.4, scikit-learn 1.9.1, xgboost 3.4.1, imbalanced-learn 0.14.2 (the four load-critical, identical in both requirement files), plus pandas 3.1.0, pyarrow 26.0.0, scipy 1.18.1, Boruta 0.4.3, scikit-posthocs 0.17.1, shap 0.54.1, matplotlib 3.11.2, seaborn 0.13.2, joblib 1.6.0.
+- **Alternatives:** Older "known-stable" pins; leave unpinned.
+- **Reason:** Verified they install and import on the owner's machine; Boruta 0.4.3 (unlike 0.3) is numpy-2 compatible, avoiding the removed `np.int` aliases. CI pins Python 3.11, which has cp311 wheels for all of these; the CI model-smoke job (Phase 9) confirms the model loads there.
+- **Effect:** `ml/requirements.txt` fully pinned; `backend/requirements.txt` pins the four load-critical + pandas/joblib now, web/test deps in Phase 7. Rule 6 satisfied.
+
+### D2.3 No categorical features -> no one-hot / SMOTENC
+- **Decision:** Treat all 14 metric columns as numeric; no one-hot encoding, and plain SMOTE (not SMOTENC) in RQ3.
+- **Alternatives:** The paper used categorical `extension`/`Ecosystem` and needed SMOTENC.
+- **Reason:** SmellyCode++ has no categorical predictor; `Project` is an identifier/grouping key, not a feature (using it would leak project identity). So the PAPER_REVIEW item 3 concern (SMOTE interpolating encoded categories) does not arise for us - we note it as avoided.
+- **Effect:** Simpler pipeline; `columns.categorical: []` in config.

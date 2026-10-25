@@ -1,20 +1,21 @@
-# Flask backend dependencies (Phase 0 starter manifest).
+# Flask backend dependencies.
 #
-# RULE 6 (CLAUDE.md): the four load-critical libraries below MUST stay pinned to
-# the SAME versions as ml/requirements.txt, or model.joblib will not deserialize.
-# Exact == pins are added in Phase 2 against a verified install.
+# RULE 6 (CLAUDE.md): the four load-critical libraries MUST stay pinned to the
+# SAME versions as ml/requirements.txt, or model.joblib will not deserialize.
+# These four are pinned now (Phase 2, verified install). The web/test deps are
+# pinned in Phase 7 when the backend is built and installed.
 #
 # --- load-critical (keep identical in ml/requirements.txt) ---
-scikit-learn
-xgboost
-imbalanced-learn
-numpy
+numpy==2.5.4
+scikit-learn==1.9.1
+xgboost==3.4.1
+imbalanced-learn==0.14.2
 #
-# --- runtime data ---
-pandas
-joblib
+# --- runtime data (verified in Phase 2) ---
+pandas==3.1.0
+joblib==1.6.0
 #
-# --- web ---
+# --- web (pinned in Phase 7) ---
 Flask
 flask-cors
 gunicorn           # optional hosting only
@@ -22,5 +23,5 @@ gunicorn           # optional hosting only
 # --- optional: /api/analyze-code (decided after Phase 1) ---
 # lizard
 #
-# --- tests ---
+# --- tests (pinned in Phase 7) ---
 pytest

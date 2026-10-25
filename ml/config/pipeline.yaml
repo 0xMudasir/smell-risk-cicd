@@ -1,5 +1,5 @@
-# Pipeline configuration. Finalised in Phase 2 (paths, target, CV strategy, seeds).
-# Values below are placeholders filled in after the Phase 1 audit.
+# Pipeline configuration (finalised in Phase 2 from the Phase 1 audit).
+# Single source of truth for paths, columns, target, and CV strategy. Seed 42.
 
 seed: 42
 
@@ -9,22 +9,48 @@ paths:
   artifacts: ml/artifacts
   reports: ml/reports
 
+dataset:
+  name: SmellyCode++ (multi-smell-dataset v1.2)
+  source_column_not_loaded: Code                # raw Java source; never a feature
+
 target:
-  # Primary target mirrors the paper: has_smell = 1 if any smell label positive.
+  # Primary target mirrors the paper: has_smell = 1 if any smell label is positive.
   name: has_smell
-  definition: any_smell_positive        # set precisely in Phase 1/2
-  smell_label_columns: []               # filled in Phase 1 audit
+  definition: any of smell_label_columns > 0
+  smell_label_columns: [Long method, God class, Feature envy, Data class]
 
 columns:
-  identifiers: []                       # never used as features (names, paths, project)
-  categorical: []                       # one-hot; SMOTENC if SMOTE must see them
-  numeric_metrics: []                   # the Understand-style metrics
-  date_column: null                     # decides TimeSeriesSplit vs grouped CV
-  project_column: null                  # needed for StratifiedGroupKFold
+  identifiers: [File, Project, Class]            # never used as features
+  categorical: []                                # none in this dataset (no one-hot / SMOTENC needed)
+  numeric_metrics:
+    - Logical Lines
+    - Distinct Operators
+    - Distinct Operands
+    - Total Operators
+    - Total Operands
+    - Vocabulary
+    - Length
+    - Calculated Length
+    - Volume
+    - Difficulty
+    - Effort
+    - Time Required
+    - Bugs                                        # Halstead delivered-bugs estimate, NOT a label
+    - Cyclomatic Complexity
+  date_column: null                               # none -> grouped CV (not time-series)
+  project_column: Project                         # grouping key for CV
+
+preprocess:
+  deduplicate: false                              # D1.5: keep all rows (tiny distinct methods); rely on grouped CV
+  drop_exact_duplicates: false
 
 cv:
-  strategy: TBD                         # time_series | grouped | stratified (Section 4.2)
+  strategy: grouped                               # Section 4.2 option 2 (no date column)
+  splitter: StratifiedGroupKFold
   n_splits: 5
+  group_column: Project
+  shuffle: true
+  random_state: 42
 
 scaling:
   # Scale-sensitive models only (trees get raw values).
