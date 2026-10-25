@@ -1,0 +1,47 @@
+// Design tokens (CLAUDE.md 7.3). Light default; dark via media query + [data-theme].
+
+:root {
+  --paper:      #F3F5F4;
+  --surface:    #FFFFFF;
+  --ink:        #18202A;
+  --ink-muted:  #5B6672;
+  --rule:       #D8DEDB;
+  --accent:     #1D5C7A;
+
+  --ok:         #2F6B4F;
+  --warn:       #B7791F;
+  --crit:       #A8322D;
+
+  // tints for chart fills / ruler segments
+  --ok-tint:    rgba(47, 107, 79, 0.12);
+  --warn-tint:  rgba(183, 121, 31, 0.16);
+  --crit-tint:  rgba(168, 50, 45, 0.16);
+
+  // spacing base 4px; radii two tiers
+  --radius-sm: 4px;
+  --radius-lg: 8px;
+  --content-max: 1280px;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@mixin dark-tokens {
+  --paper:      #121619;
+  --surface:    #1A2025;
+  --ink:        #E6EAEC;
+  --ink-muted:  #9AA5AE;
+  --rule:       #2B333A;
+  --accent:     #6AAFCF;
+  --ok:         #5DAF86;
+  --warn:       #E0A73E;
+  --crit:       #E06A62;
+  --ok-tint:    rgba(93, 175, 134, 0.16);
+  --warn-tint:  rgba(224, 167, 62, 0.18);
+  --crit-tint:  rgba(224, 106, 98, 0.18);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { @include dark-tokens; }
+}
+:root[data-theme="dark"] { @include dark-tokens; }

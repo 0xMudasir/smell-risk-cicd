@@ -35,7 +35,8 @@ same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend
 | P5 | RQ3 models + final model | done |
 | P6 | Paper review + export | done |
 | P7 | Flask API | done |
-| P8 | Angular UI | next |
+| P8 | Angular UI | done |
+| P9 | CI/CD + Pages | next |
 | P7 | Flask API | |
 | P8 | Angular UI | |
 | P9 | CI/CD + Pages | |

@@ -204,3 +204,23 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Decision:** Implement Section 6 exactly: critical if probability >= 0.7 OR >= 2 critical flags; low if probability < 0.4 and no critical flag; else elevated. Cutoffs read from `thresholds.json`, not hard-coded.
 - **Reason:** The two signals catch different failure modes - a confident model score and an extreme-metric outlier the model may under-weight (seen in the live smoke test: an out-of-range row scored prob 0.18 but was flagged critical by 8 metrics).
 - **Effect:** `risk_tier` logic lives in `predictor.py`; tunable via `thresholds.json`.
+
+---
+
+## Phase 8 - Angular UI
+
+### D8.1 Angular 20 (not latest 22)
+- **Decision:** Pin Angular 20; chart/icon deps echarts 5.6.0, ngx-echarts 20.0.2, lucide-angular 1.0.0.
+- **Alternatives:** Angular 22 (latest).
+- **Reason:** Angular CLI 22 requires Node >= 24.15 (local is 24.13) and drops Node 20, but CI is specced on Node 20 (8.1). Angular 20 supports Node 20.19+ and Node 24, so it builds on both; ngx-echarts 22 needs Angular 22, hence the 20.x line.
+- **Effect:** Builds clean locally and will on CI Node 20. Recorded so a future Node bump can revisit.
+
+### D8.2 Static JSON first; API only for Predict; committed build-info
+- **Decision:** Research pages read `assets/results/*.json` via `ResultsService`; only Predict calls the API, with a static `feature_schema.json` fallback and the offline banner. A default `build-info.ts` is committed (CD overwrites it) rather than gitignored.
+- **Reason:** CLAUDE.md 7.6 - the Pages site must work with no API. Committing build-info means CI can build the tree (a gitignored generated import would break the frontend CI job).
+- **Effect:** All pages render offline (verified with Playwright: Overview, Dataset, Features, Thresholds, Models render; Predict shows the offline state and a schema-driven form). `.gitignore` no longer ignores build-info.ts.
+
+### D8.3 Hash routing, assets mapping, and a page-level overflow guard
+- **Decision:** `withHashLocation()`; map `src/assets` -> `assets` in angular.json; `html, body { overflow-x: hidden }` plus per-table `.scroll-x` wrappers.
+- **Reason:** Hash routing avoids 404s on deep-link refresh on Pages (7.2). The overflow guard + table wrappers meet the "no horizontal page scroll at 360px" floor (7.8) while the nav tab bar and wide tables keep their own internal scroll (verified: pageScrollX = 0 on every page at 360px).
+- **Effect:** Output at `dist/smell-risk-dashboard/browser` (for CD). Initial bundle 332 kB raw / 96 kB transfer; echarts lazy-loaded.

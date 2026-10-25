@@ -1,0 +1,24 @@
+// Typography (CLAUDE.md 7.3). IBM Plex Sans for UI, IBM Plex Mono for metric ids.
+
+body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 { font-weight: 600; line-height: 1.25; margin: 0 0 .5rem; }
+h1 { font-size: 24px; }   // page title
+h2 { font-size: 20px; }
+h3 { font-size: 16px; }
+
+.t-12 { font-size: 12px; }
+.t-13 { font-size: 13px; }
+.t-muted { color: var(--ink-muted); }
+
+// metric identifiers / code are mono and meaningful (they are code identifiers)
+code, .mono { font-family: var(--font-mono); }
+
+// tabular numbers in tables, right-aligned
+.num { font-variant-numeric: tabular-nums; text-align: right; }
