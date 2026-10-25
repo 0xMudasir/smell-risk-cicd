@@ -90,3 +90,25 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** The paper used categorical `extension`/`Ecosystem` and needed SMOTENC.
 - **Reason:** SmellyCode++ has no categorical predictor; `Project` is an identifier/grouping key, not a feature (using it would leak project identity). So the PAPER_REVIEW item 3 concern (SMOTE interpolating encoded categories) does not arise for us - we note it as avoided.
 - **Effect:** Simpler pipeline; `columns.categorical: []` in config.
+
+---
+
+## Phase 3 - RQ1 feature importance
+
+### D3.1 Break Boruta ties with a RandomForest importance
+- **Decision:** When Boruta confirms every feature (it does here - all 14 are "relevant"), order its top-10 by a separate RandomForest `feature_importances_` instead of by Boruta's tied ranking.
+- **Alternatives:** Use Boruta's raw ranking (all confirmed features tie at rank 1, so the "top-10" degenerates to dataframe column order); use Boruta importance history.
+- **Reason:** A column-order top-10 is an artefact, not a result, and it silently distorted the strict consensus (it dropped Cyclomatic Complexity purely by position). An RF importance tie-break makes Boruta's contribution meaningful.
+- **Effect:** `boruta.rf_importance_tiebreak` recorded; `boruta_support` still shows the confirm/reject verdict (all confirmed). Strict consensus unchanged; the >=4/5 list now correctly includes Cyclomatic Complexity.
+
+### D3.2 Compare to the paper at the family level, not by metric name
+- **Decision:** Report RQ1 agreement with the paper as size/cyclomatic family overlap, not a name-level intersection with its 6 Understand core metrics.
+- **Alternatives:** Intersect metric names (empty by construction - different toolkits).
+- **Reason:** SmellyCode++ has Halstead metrics, the paper has SciTools Understand metrics; no names overlap. The scientific question (CLAUDE.md 1.2) is whether the same *families* matter.
+- **Effect:** `rq1_summary.md` records the verdict: size dominates (whole strict consensus) and cyclomatic enters at 4/5 - the paper's pattern replicates despite a different target and toolkit.
+
+### D3.3 Subsample Boruta and SHAP; keep the other methods on full data
+- **Decision:** Run Boruta on a 25k stratified subsample and SHAP on 5k; LinReg/LogReg/XGB/ANOVA/permutation use all 107k rows (permutation per CV fold).
+- **Alternatives:** Full data for all (Boruta fits many RF ensembles - minutes per run).
+- **Reason:** RQ1 importance is descriptive (CLAUDE.md 4.3), so a stratified subsample for the expensive methods is acceptable and keeps the script re-runnable in under a minute. Sample sizes are recorded in the JSON.
+- **Effect:** Reproducible with seed 42; sample sizes noted in `rq1_importance.json` and `rq1_summary.md`.

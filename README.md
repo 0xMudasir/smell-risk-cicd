@@ -14,19 +14,21 @@ Owner: Mudasir Ali (BSSE-F23-A, Air University).
 
 ## Status
 
-Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 2 (preprocess + CV) done.**
+Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 3 (RQ1) done.**
 
 Dataset identified as **SmellyCode++** (107,554 rows, 89 Java projects, 4 smells,
 9.22% smelly). Full profile in `ml/reports/dataset_audit.md`. CV =
 `StratifiedGroupKFold` grouped on `Project` (zero train/test project overlap).
+RQ1: size + cyclomatic families dominate, mirroring the paper (`ml/reports/rq1_summary.md`).
 
 | Phase | Goal | State |
 |---|---|---|
 | P0 | Scaffold + git | done |
 | P1 | Dataset audit | done |
 | P2 | Preprocess + CV | done |
-| P3 | RQ1 feature importance | next |
-| P3-P5 | RQ1 / RQ2 / RQ3 + final model | |
+| P3 | RQ1 feature importance | done |
+| P4 | RQ2 statistics + thresholds | next |
+| P5 | RQ3 models + final model | |
 | P6 | Paper review + export | |
 | P7 | Flask API | |
 | P8 | Angular UI | |
