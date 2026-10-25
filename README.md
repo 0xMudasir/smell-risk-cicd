@@ -14,6 +14,10 @@ Owner: Mudasir Ali (BSSE-F23-A, Air University).
 
 ## Status
 
+**Live site:** https://0xmudasir.github.io/smell-risk-cicd/ (deployed by CD; the
+top-bar build tag shows the commit SHA + Actions run number). The Predict page
+needs a local API (`python backend/app.py`); other pages work from static JSON.
+
 Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 3 (RQ1) done.**
 
 Dataset identified as **SmellyCode++** (107,554 rows, 89 Java projects, 4 smells,
@@ -36,7 +40,7 @@ same pattern as the paper (`ml/reports/rq3_summary.md`). Model saved to `backend
 | P6 | Paper review + export | done |
 | P7 | Flask API | done |
 | P8 | Angular UI | done |
-| P9 | CI/CD + Pages | config done; push to go live |
+| P9 | CI/CD + Pages | done (live) |
 | P10 | Docs + demo | next |
 | P7 | Flask API | |
 | P8 | Angular UI | |
