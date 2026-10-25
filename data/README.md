@@ -9,11 +9,18 @@ data/raw/multi-smell-dataset-v1_2.csv
 
 ## Source
 
-- Dataset: `multi-smell-dataset` (v1.2), a multi-label code-smell dataset.
-- Source / licence / exact citation: **TBD - filled during the Phase 1 audit.**
-- Granularity, languages, label source, and how smell labels were produced
-  (manual vs tool/rule-based) are documented in `ml/reports/dataset_audit.md`
-  after Phase 1, and summarised in `CLAUDE.md` Section 2.
+- Dataset: **SmellyCode++** (v1.2), a multi-label code-smell dataset for Java.
+- Citation: *SmellyCode++: Multi-Label Dataset for Code Smell Detection*, KFUPM,
+  published in *Scientific Data* (July 2025).
+- Landing pages:
+  - <https://pmc.ncbi.nlm.nih.gov/articles/PMC12255726/>
+  - <https://pure.kfupm.edu.sa/en/publications/smellycode-multi-label-dataset-for-code-smell-detection/>
+- Licence: check the Scientific Data article (CC-BY likely); confirm before any redistribution.
+- Content: 107,554 rows over 89 Java OSS projects; 14 numeric metrics (Halstead +
+  cyclomatic + logical lines), 4 binary smell labels (Long method, God class,
+  Feature envy, Data class), plus `File`/`Project`/`Class` identifiers and a raw
+  `Code` source column.
+- Full profile: `ml/reports/dataset_audit.md`; summary in `CLAUDE.md` Section 2.
 
 ## Circularity note
 

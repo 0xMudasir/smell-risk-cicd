@@ -14,13 +14,16 @@ Owner: Mudasir Ali (BSSE-F23-A, Air University).
 
 ## Status
 
-Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 0 (scaffold) done.**
+Built in stop-gated phases (see `CLAUDE.md` Section 5). **Phase 1 (dataset audit) done.**
+
+Dataset identified as **SmellyCode++** (107,554 rows, 89 Java projects, 4 smells,
+9.22% smelly). Full profile in `ml/reports/dataset_audit.md`.
 
 | Phase | Goal | State |
 |---|---|---|
 | P0 | Scaffold + git | done |
-| P1 | Dataset audit | next |
-| P2 | Preprocess + CV | |
+| P1 | Dataset audit | done |
+| P2 | Preprocess + CV | next |
 | P3-P5 | RQ1 / RQ2 / RQ3 + final model | |
 | P6 | Paper review + export | |
 | P7 | Flask API | |

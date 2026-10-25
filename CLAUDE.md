@@ -79,16 +79,31 @@ Table 4 hyperparameters (use exactly in the replication track):
 ## 2. Dataset (fill this section in during Phase 1)
 
 ```
-Location:            data/raw/<filename>        (gitignored)
-Rows x columns:      TBD
-Granularity:         TBD  (class-level / method-level / file-level)
-Language(s):         TBD
-Smell label columns: TBD  (list each smell + positive rate)
-Metric columns:      TBD  (list; mark which map to the paper's 25 Understand metrics)
-Identifier columns:  TBD  (project, file/class/method name: never used as features)
-Date / commit col:   TBD  (decides time-series CV vs grouped CV)
-Project column:      TBD  (needed for grouped CV)
-Label source:        TBD  (manual annotation? tool like PMD / DECOR / iPlasma / CK rules?)
+Dataset:             SmellyCode++ (KFUPM; Scientific Data, Jul 2025). File: multi-smell-dataset-v1_2.csv
+Location:            data/raw/multi-smell-dataset-v1_2.csv        (gitignored, 618 MB)
+Rows x columns:      107,554 rows x 22 columns (21 loaded; 'Code' source text never loaded)
+Granularity:         MIXED method-level + class-level (one row per sub-class entity). An
+                     identifier recurs up to 17x (a class's row + its methods' rows). Finer
+                     than the paper's file level. No method-name / granularity-flag column.
+Language(s):         Java (OSS projects: jena, hive, hadoop, hbase, nifi, activemq, ...)
+Smell label columns: Long method (1.46%), God class (4.03%), Feature envy (1.86%), Data class (3.05%).
+                     has_smell (any) = 9.22% smelly. Method-family {Long method, Feature envy} and
+                     class-family {God class, Data class} NEVER co-occur (0 rows) -> granularity split.
+Metric columns (14): Halstead family -> Distinct/Total Operators, Distinct/Total Operands, Vocabulary,
+                     Length, Calculated Length, Volume, Difficulty, Effort, Time Required, Bugs
+                     (Halstead delivered-bugs estimate, NOT a label); plus Logical Lines (size) and
+                     Cyclomatic Complexity. Only Cyclomatic Complexity (~SumCyclomatic) and Logical
+                     Lines (~CountLine) map to the paper's 25 Understand metrics; the Halstead set does
+                     not. We replicate the METHOD, not the feature set. Near-all metrics |r|>0.9
+                     (several exactly 1.0: Bugs=Volume/3000, Time=Effort/18) -> coef importance unstable.
+Identifier columns:  File, Project, Class (+ Code source text). Never used as features.
+Date / commit col:   NONE. -> CV falls to grouped CV on Project (Section 4.2 option 2).
+Project column:      Project (89 distinct; paper cites ~103 - minor discrepancy). Used for grouped CV.
+Label source:        SmellyCode++: AST parse + feature extraction, annotated "based on prior studies"
+                     (Fontana-style). Exact rule (manual vs DECOR/PMD/iPlasma thresholds) NOT confirmed
+                     from accessible pages (full descriptor behind a browser check). Circularity:
+                     PLAUSIBLE but single-metric separability is only moderate (best Cohen's d ~0.78),
+                     so no one-metric threshold rule. Confirm before P3; run ablation in P5 regardless.
 ```
 
 ### 2.1 Target definition

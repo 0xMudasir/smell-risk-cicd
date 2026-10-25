@@ -30,3 +30,37 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Alternatives:** Force CI to 3.13; force local to 3.11.
 - **Reason:** 3.11 is the lab's stated CI version. A model pickled under one minor version can usually load under another if library versions match, but this is a known compatibility risk to watch.
 - **Effect:** In Phase 2 we verify the pinned versions install on both; in Phase 5/CI model-smoke we confirm the saved model loads under 3.11.
+
+---
+
+## Phase 1 - Dataset audit
+
+### D1.1 Do not load or use the `Code` column
+- **Decision:** The audit (and the whole pipeline) reads the CSV with `usecols` excluding `Code`.
+- **Alternatives:** Load the full file; use source text as an NLP feature.
+- **Reason:** `Code` is the raw Java source and is the bulk of the 618 MB file. It is an identifier-like artefact, not a quality metric, and loading it balloons memory for no modelling value. (A future "paste code" API path would re-derive metrics with a tool, not read this column.)
+- **Effect:** Audit runs in seconds on ~107k x 21. `Code` is listed as an identifier-class column everywhere.
+
+### D1.2 Primary target stays `has_smell` over mixed granularity
+- **Decision:** Keep CLAUDE.md 2.1's primary target (`has_smell` = any of the 4 smells), despite the dataset mixing method-level and class-level rows.
+- **Alternatives:** Split into separate method-level and class-level tasks; keep only class rows.
+- **Reason:** The audit showed rows are sub-class entities (an identifier recurs up to 17x) and the method-family {Long method, Feature envy} never co-occurs with the class-family {God class, Data class} (0 rows). There is no granularity flag to split cleanly on. `has_smell` mirrors the paper's binary any-label target; the per-smell extension models naturally respect the method/class split.
+- **Effect:** One primary binary task on all rows; per-smell models reported separately (extension). Granularity caveat documented in the report and REPORT.md.
+
+### D1.3 Metrics are Halstead, not the paper's Understand set - replicate method only
+- **Decision:** Treat the 14 numeric columns (Halstead family + cyclomatic + logical lines) as the feature set, and frame the project as replicating the paper's *method*, not its features.
+- **Alternatives:** Try to recompute the paper's 25 Understand metrics from the source (needs SciTools Understand, licensed, and the full source tree).
+- **Reason:** Only Cyclomatic Complexity (~SumCyclomatic) and Logical Lines (~CountLine) map to the paper's families; the rest are Halstead software-science metrics the paper did not use. Recomputing Understand metrics is out of scope and not reproducible without the tool.
+- **Effect:** RQ1/RQ2/RQ3 run on these 14; comparisons to the paper are about *patterns* (families, a 3x rule, tree ensembles winning), never exact metric overlap. Strong collinearity (near-all |r|>0.9, several exactly 1.0) is flagged for RQ1.
+
+### D1.4 Circularity verdict: PLAUSIBLE, confirm later; ablation planned regardless
+- **Decision:** Record circularity as plausible-but-unconfirmed and proceed; verify the SmellyCode++ labeling rule before Phase 3 and run a metric-ablation in Phase 5 either way.
+- **Alternatives:** Assume leakage and drop metrics now; ignore the risk.
+- **Reason:** SmellyCode++ annotates "based on prior studies" (rule not stated in accessible pages; full descriptor behind a browser check). Measured single-metric separability is only moderate (best Cohen's d ~0.78), so no single Halstead metric is the label rule - but a multi-metric heuristic is still possible, and the dataset's own high reported F1s are consistent with learnable labels.
+- **Effect:** CLAUDE.md Section 2 and the audit record the verdict; PAPER_REVIEW item 5 / Phase 5 ablation track this.
+
+### D1.5 Proposed: no deduplication; rely on grouped-by-project CV (needs sign-off)
+- **Decision (proposed, pending Rule 4 sign-off in Phase 2):** Do not drop the ~42.9k exact metric+label duplicates.
+- **Alternatives:** Drop exact duplicates; dedup on identifier.
+- **Reason:** Exact-duplicate rows are mostly tiny distinct methods (median 2 logical lines) - e.g. many identical one-line getters - so they are genuinely different entities, not errors; there is no method-name column to tell them apart. `StratifiedGroupKFold(groups=Project)` already keeps every entity of a project (hence every method of a class) on one side of each split, so the method/class repetition cannot leak across folds without any dropping.
+- **Effect:** If approved, preprocessing keeps all rows and leans on grouped CV for the leakage guarantee (paper-review item 5). Revisit if grouped CV proves infeasible.
