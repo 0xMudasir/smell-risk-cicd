@@ -245,3 +245,10 @@ One entry per non-trivial decision: *decision, alternatives, reason, effect*
 - **Decision:** `deploy.yml` triggers on `workflow_run` of "CI" completed on main, runs only if `conclusion == 'success'`, checks out `head_sha`, and generates `build-info.ts` (short SHA, run number, UTC time) before building.
 - **Reason:** Matches CLAUDE.md 8.2/8.3; the build tag on the live top bar changes after each push, which is how the demo proves CD worked.
 - **Effect:** Pages deploys only from green builds; manual steps (create repo, enable Pages = GitHub Actions) are the owner's, documented in the README.
+
+### D9.4 CI Python is 3.13, not 3.11 (the trained stack requires >=3.12)
+- **Decision:** Reverse D9.2 - run CI backend/model-smoke on Python 3.13.
+- **Trigger:** The first CI run failed at `pip install`: `numpy==2.5.4` requires Python >=3.12, so it has no 3.11 wheel. The pinned stack (resolved on local 3.13) is a 3.12+ stack.
+- **Alternatives:** Downgrade numpy to a 3.11-compatible 2.4.x and retrain the model.
+- **Reason:** `model.joblib` was pickled with numpy 2.5.4 and xgboost 3.4.1; the safest guarantee that it deserializes is to install the *identical* versions, which means Python 3.12+. Downgrading numpy would mean retraining and risks the saved model. 3.13 also matches the owner's local environment exactly.
+- **Effect:** `ci.yml` uses `python-version: '3.13'` in both Python jobs; the lab's "3.11" is superseded. The model-smoke job now actually exercises the same stack the model was trained on.
